@@ -120,6 +120,16 @@ public class Entree {
 	}
 	
 	/**
+	 * Change le motif de l'entree
+	 * 
+	 * @param motif
+	 * 			nouveau motif de l'entree
+	 */
+	public void setMotif(Motif motif) {
+		this.motif = motif;
+	}
+	
+	/**
 	 * Affiche l'entree
 	 */
 	public void display() {
