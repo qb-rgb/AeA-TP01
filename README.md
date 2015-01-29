@@ -23,3 +23,11 @@ Dot plot :
 		- le dot plot sera symétrique par rapport à la diagonale
 
 	Un dot plot pourra par exemple représenter tous les mots de tailles 6 qui sont répétés dans la séquence.
+
+	
+Reste à faire :
+	
+	- Implémenter l'algorithme KMP
+	- Tester sur de vrai valeur
+	- Écrire un jeu de test pour les classes Entree et Sortie
+	- Écrire une classe qui donne une representation graphique d'une instance de Sortie
