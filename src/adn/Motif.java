@@ -1,7 +1,7 @@
 package adn;
 
 /**
- * Classe representant un brin d'ADN.
+ * Classe representant un motif a rechercher dans une sequence d'ADN.
  * 
  * @author Quentin Baert & Alexandre Verkyndt
  */
@@ -11,18 +11,16 @@ public class Motif {
 	// ATTRIBUTS //
 	///////////////
 	
-	private String nom;
-	
-	private String brin;
+	private String motif;
 	
 	//////////////
 	// METHODES //
 	//////////////
 	
 	// Verifie qu'une chaine est bien uniquement constituee de caracteres pouvant etre assimiles a des nucleotides	
-	private boolean checkSyntax(String brin) {
-		for (int i = 0; i < brin.length(); i++) {	
-			char nucl = brin.charAt(i);
+	private boolean checkSyntax(String motif) {
+		for (int i = 0; i < motif.length(); i++) {	
+			char nucl = motif.charAt(i);
 			if ((nucl != 'A') && (nucl != 'C') && (nucl != 'G') && (nucl != 'T'))
 			   return false;
 		}
@@ -32,36 +30,24 @@ public class Motif {
 	/**
 	 * Constructeur.
 	 *
-	 * @param nom
-	 *			nom du brin d'ADN
-	 * @param brin
-	 *			chaine de caracteres representant le brin d'ADN
+	 * @param motif
+	 *			chaine de caracteres representant le motif d'ADN
 	 */
-	public Motif(String nom, String brin) throws IllegalArgumentException {
-		if (this.checkSyntax(brin)) {
-			this.nom = nom;
-			this.brin = brin;
+	public Motif(String motif) throws IllegalArgumentException {
+		if (this.checkSyntax(motif)) {
+			this.motif = motif;
 		}
 		else
-			throw new IllegalArgumentException("La chaine de caractères ne correspond pas à un brin d'ADN.");
+			throw new IllegalArgumentException("La chaine de caractères ne correspond pas à un motif d'ADN.");
 	}
 
 	/**
-	 * Donne le nom du brin d'ADN.
-	 *
-	 * @return nom du brin d'ADN
-	 */
-	public String getNom() {
-		return this.nom;
-	}
-	
-	/**
-	 * Donne la chaine de caracteres representant le brin d'ADN.
+	 * Donne la chaine de caracteres representant le motif
 	 * 
-	 * @return chaine de caracteres representant le brin d'ADN
+	 * @return chaine de caracteres representant le motif
 	 */
-	public String getBrin() {
-		return this.brin;
+	public String getMotif() {
+		return this.motif;
 	}
 	
 	// Renverse une chaine de caracteres
@@ -70,12 +56,12 @@ public class Motif {
 	}
 	
 	/**
-	 * Donne la chaine de caracteres representant le brin reverse de ce brin d'ADN.
+	 * Donne la chaine de caracteres representant le motif reverse de ce motif
 	 * 
-	 * @return chaine de caracteres representant le brin reverse de ce brin d'ADN
+	 * @return chaine de caracteres representant le motif reverse de ce motif
 	 */
 	public String getReverse() {
-		return this.reverse(this.brin); 
+		return this.reverse(this.motif); 
 	}
 	
 	// Donne l'inverse d'un nucleotide
@@ -89,14 +75,14 @@ public class Motif {
 	}
 	
 	/**
-	 * Donne la chaine de caracteres representant le brin complementaire a ce brin d'ADN.
+	 * Donne la chaine de caracteres representant le motif complementaire a ce motif
 	 * 
-	 * @return chaine de caracteres representant le brin complementaire a ce brin d'ADN
+	 * @return chaine de caracteres representant le motif complementaire a ce motif
 	 */
 	public String getCompl() {
 		StringBuilder sb = new StringBuilder();
 		
-		for (char nucleotide : this.brin.toCharArray()) {
+		for (char nucleotide : this.motif.toCharArray()) {
 			sb.append(this.nucleotideCompl(nucleotide));
 		}
 		
@@ -104,9 +90,9 @@ public class Motif {
 	}
 	
 	/**
-	 * Donne la chaine de caracteres representant le brin reverse complementaire a ce brin d'ADN.
+	 * Donne la chaine de caracteres representant le motif reverse complementaire a ce motif
 	 * 
-	 * @return chaine de caracteres representant le brin reverse complementaire a ce brin d'ADN
+	 * @return chaine de caracteres representant le motif reverse complementaire a ce motif
 	 */
 	public String getRevCompl() {
 		return this.reverse(this.getCompl());

@@ -11,19 +11,13 @@ import org.junit.Test;
  */
 public class MotifTest {
 	
-	private String motifName = "test";
 	private String motifStr = "ACGTGTACGTATGGCA"; 
-	private Motif motif = new Motif(motifName, motifStr);
-	private Motif motifVide = new Motif("vide", "");
+	private Motif motif = new Motif(motifStr);
+	private Motif motifVide = new Motif("");
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testMotifConstructor() {
-		new Motif("motif non valable", "CECINESTPASUNESUITEDENUCLEOTIDES");
-	}
-	
-	@Test
-	public void testGetName() {
-		assertEquals(motif.getName(), motifName);
+		new Motif("CECINESTPASUNESUITEDENUCLEOTIDES");
 	}
 	
 	@Test
