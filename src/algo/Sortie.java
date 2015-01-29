@@ -17,6 +17,11 @@ public class Sortie {
 	///////////////
 	
 	/**
+	 * Nom de la sequence d'ADN de la sortie
+	 */
+	private String name;
+	
+	/**
 	 * Sequence de nucleotide dans laquelle le motif a ete cherche
 	 */
 	private String sequence;
@@ -38,15 +43,27 @@ public class Sortie {
 	/**
 	 * Constructeur
 	 * 
+	 * @param name
+	 * 			nom de la sequence d'ADN de la sortie
 	 * @param sequence
 	 * 			sequence dans laquelle le motif a ete cherche
 	 * @param motif
 	 * 			motif recherche par l'algorithme
 	 */
-	public Sortie(String sequence, Motif motif) {
+	public Sortie(String name, String sequence, Motif motif) {
+		this.name = name;
 		this.sequence = sequence;
 		this.motif = motif;
 		this.positions = new ArrayList<Integer>();
+	}
+	
+	/**
+	 * Donne le nom de la sequence d'ADN de la sortie
+	 * 
+	 * @return nom de la sequence d'ADN de la sortie
+	 */
+	public String getName() {
+		return this.name;
 	}
 
 	/**

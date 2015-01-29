@@ -14,6 +14,11 @@ public class Entree {
 	///////////////
 
 	/**
+	 * Nom de la sequence d'ADN de l'entree
+	 */
+	private String name;
+	
+	/**
 	 * Sequence de nucleotides representant un brin d'ADN dans lequel rechercher un motif
 	 */
 	private String sequence;
@@ -30,14 +35,26 @@ public class Entree {
 	/**
 	 * Constructeur
 	 * 
+	 * @param name
+	 * 			nom de la sequence d'ADN de l'entree 
 	 * @param sequence
 	 * 			sequence de l'entree dans laquelle chercher le motif
 	 * @param motif
 	 * 			motif a chercher dans le sequence de l'entree
 	 */
-	public Entree(String sequence, Motif motif) {
+	public Entree(String name, String sequence, Motif motif) {
+		this.name = name;
 		this.sequence = sequence;
 		this.motif = motif;
+	}
+	
+	/**
+	 * Donne le nom de la sequence d'ADN de l'entree
+	 * 
+	 * @return nom de la sequence d'ADN de l'entree
+	 */
+	public String getName() {
+		return this.name;
 	}
 	
 	/**
