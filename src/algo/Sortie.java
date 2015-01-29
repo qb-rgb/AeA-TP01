@@ -106,7 +106,7 @@ public class Sortie {
 	/**
 	 * Affiche la sortie
 	 */
-	public void affiche() {
+	public void display() {
         System.out.println("Nom de la séquence : " +
                 this.name                          +
                 "\n"                               +

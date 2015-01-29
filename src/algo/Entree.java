@@ -78,7 +78,7 @@ public class Entree {
 	/**
 	 * Affiche l'entree
 	 */
-	public void affiche() {
+	public void display() {
         System.out.println("Nom de la séquence : " +
                 this.name                          +
                 "\n"                               +
