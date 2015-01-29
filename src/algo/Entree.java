@@ -74,5 +74,19 @@ public class Entree {
 	public Motif getMotif() {
 		return this.motif;
 	}
+	
+	/**
+	 * Affiche l'entree
+	 */
+	public void affiche() {
+        System.out.println("Nom de la séquence : " +
+                this.name                          +
+                "\n"                               +
+                this.sequence                      +
+                "\n"                               +
+                "Motif a rechercher : "            +
+                motif.toString()
+                );
+    }
 
 }
