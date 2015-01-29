@@ -11,7 +11,7 @@ public class Motif {
 	// ATTRIBUTS //
 	///////////////
 	
-	private String name;
+	private String nom;
 	
 	private String brin;
 	
@@ -39,7 +39,7 @@ public class Motif {
 	 */
 	public Motif(String nom, String brin) throws IllegalArgumentException {
 		if (this.checkSyntax(brin)) {
-			this.name = nom;
+			this.nom = nom;
 			this.brin = brin;
 		}
 		else
@@ -51,8 +51,8 @@ public class Motif {
 	 *
 	 * @return nom du brin d'ADN
 	 */
-	public String getName() {
-		return this.name;
+	public String getNom() {
+		return this.nom;
 	}
 	
 	/**
