@@ -1,5 +1,9 @@
 package algo;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 import adn.Motif;
 
 /**
@@ -48,6 +52,46 @@ public class Entree {
 		this.motif = motif;
 	}
 	
+	/**
+	 * Constructeur
+	 * 
+     * Récupère depuis un fichier fasta le nom de la sequence et la sequence ADN
+     * 
+     * @param chemin
+     * @throws IOException
+     */
+    public Entree(String path) throws IOException {
+
+        // br sert à lire le fichier ligne par ligne
+        BufferedReader br = new BufferedReader(new  FileReader(path));
+
+        String ligne;
+
+        // on cherche la ligne correspondant au nom de la sequance
+        while((ligne = br.readLine()) != null)
+            if( ! ligne.startsWith(">"))
+                continue;
+            else {
+                this.name = ligne;
+                break;
+            }
+        //si on a pas trouve le nom, alors le fichier n'est pas valide
+        if(ligne == null) {
+            br.close();
+            throw new IOException("Le fichier fasta ne possède pas le bon format");
+        }
+
+        this.sequence = "";
+        // on recupere la sequence adn
+        while((ligne = br.readLine()) != null) {
+            this.sequence += ligne;
+        }
+        
+        // Le motif est positionner a null le temps d'etre reference
+        this.motif = null;
+        br.close();
+    }
+    
 	/**
 	 * Donne le nom de la sequence d'ADN de l'entree
 	 * 
