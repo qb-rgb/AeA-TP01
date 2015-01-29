@@ -102,5 +102,25 @@ public class Sortie {
 	public void addPosition(int position) {
 		this.positions.add(position);
 	}
+	
+	/**
+	 * Affiche la sortie
+	 */
+	public void affiche() {
+        System.out.println("Nom de la séquence : " +
+                this.name                          +
+                "\n"                               +
+                this.sequence                      +
+                "\n"                               +
+                "Motif a rechercher : "            +
+                motif.toString()                   +
+                "\n"                               +
+                "Positions du motif : \n"
+                );
+        
+        for (Integer position : this.positions) {
+        	System.out.println(position);
+        }
+    }	
 
 }
