@@ -14,10 +14,17 @@ public class AlgoKMP implements Algo {
     }
 
 
+    protected boolean isBord(String motif, String u, int i){
+        
+        return isBord(motif.substring(0, i-1), u);
+    }
 
+    private boolean isBord(String motif, String u){
+                
+        return isClean(motif, u) && isPrefix(motif, u) && isSuffix(motif, u);
+    }
 
     protected boolean isClean(String motif, String u){
-    
         return !(
                 u.equals(motif)
                 ); 
