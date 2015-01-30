@@ -23,6 +23,16 @@ public class AlgoKMP implements Algo {
                 ); 
     }
 
+    protected boolean isPrefix(String motif, String u){
+        int ul = u.length();
 
+        return u.equals(
+                motif.substring(
+                        0, 
+                        ul
+                        )
+                );
+
+    }
 
 }
