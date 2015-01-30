@@ -16,6 +16,7 @@ import algo.Sortie;
 public class AlgoNaifTest {
 	
 	private String sequence = "ACCCAGTACGACCGAA";
+	private AlgoNaif algo = AlgoNaif.getInstance();
 	
 	@Test
 	public void testAlgoMotifPresent() {
@@ -28,7 +29,7 @@ public class AlgoNaifTest {
 		sortie.addPosition(7);
 		sortie.addPosition(10);
 		
-		assertEquals(sortie, new AlgoNaif().apply(entree));
+		assertEquals(sortie, algo.apply(entree));
 	}
 	
 	@Test
@@ -37,6 +38,6 @@ public class AlgoNaifTest {
 		Entree entree = new Entree("entreeTest", sequence, motif);
 		Sortie sortie = new Sortie(entree);
 		
-		assertEquals(sortie, new AlgoNaif().apply(entree));
+		assertEquals(sortie, algo.apply(entree));
 	}
 }

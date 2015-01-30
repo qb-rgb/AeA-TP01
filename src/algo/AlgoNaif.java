@@ -8,6 +8,29 @@ import adn.Motif;
  * @author Quentin Baert & Alexandre Verkyndt
  */
 public class AlgoNaif implements Algo {
+	
+	///////////////
+	// ATTRIBUTS //
+	///////////////
+	
+	private static AlgoNaif instance = new AlgoNaif();
+	
+	//////////////
+	// METHODES //
+	//////////////
+	
+	// Contructeur prive
+	private AlgoNaif() {
+	}
+	
+	/**
+	 * Accesseur vers l'unique instance de la classe AlgoNaif
+	 * 
+	 * @return unique instance de la classe AlgoNaif
+	 */
+	public static AlgoNaif getInstance() {
+		return instance;
+	}
 
 	@Override
 	public Sortie apply(Entree entree) {
