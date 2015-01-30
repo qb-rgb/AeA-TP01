@@ -21,7 +21,7 @@ public class AlgoNaifTest {
 	@Test
 	public void testAlgoMotifPresent() {
 		Motif motif = new Motif("AC");
-		Entree entree = new Entree("entreeTest", sequence, motif);
+		Entree entree = new Entree("entreeTest", sequence, motif, false, false, false);
 		Sortie sortie = new Sortie(entree);
 		
 		// Ajout des positions attendues
@@ -35,7 +35,7 @@ public class AlgoNaifTest {
 	@Test
 	public void testAlgoMotifAbsent() {
 		Motif motif = new Motif("TC");
-		Entree entree = new Entree("entreeTest", sequence, motif);
+		Entree entree = new Entree("entreeTest", sequence, motif, false, false, false);
 		Sortie sortie = new Sortie(entree);
 		
 		assertEquals(sortie, algo.apply(entree));

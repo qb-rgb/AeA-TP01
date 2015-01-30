@@ -32,6 +32,21 @@ public class Entree {
 	 */
 	private Motif motif;
 	
+	/**
+	 * Determine si l'algo doit considerer le reverse du motif
+	 */
+	private boolean takeReverse;
+	
+	/**
+	 * Determine si l'algo doit considerer le complement du motif
+	 */
+	private boolean takeCompl;
+	
+	/**
+	 * Determine si l'algo doit considerer le reverse-complement du motif
+	 */
+	private boolean takeRevCompl;
+	
 	//////////////
 	// METHODES //
 	//////////////
@@ -46,10 +61,13 @@ public class Entree {
 	 * @param motif
 	 * 			motif a chercher dans le sequence de l'entree
 	 */
-	public Entree(String name, String sequence, Motif motif) {
+	public Entree(String name, String sequence, Motif motif, boolean takeReverse, boolean takeCompl, boolean takeRevCompl) {
 		this.name = name;
 		this.sequence = sequence;
 		this.motif = motif;
+		this.takeCompl = takeCompl;
+		this.takeReverse = takeReverse;
+		this.takeRevCompl = takeRevCompl;
 	}
 	
 	/**
@@ -129,6 +147,33 @@ public class Entree {
 		this.motif = motif;
 	}
 	
+	/**
+	 * Determine si l'algo doit considerer le reverse du motif
+	 * 
+	 * @return true si l'algo doit considerer le reverse du motif, false sinon
+	 */
+	public boolean takeReverse() {
+		return this.takeReverse;
+	}
+	
+	/**
+	 * Determine si l'algo doit considerer le complement du motif
+	 * 
+	 * @return true si l'algo doit considerer le complement du motif, false sinon
+	 */
+	public boolean takeCompl() {
+		return this.takeCompl;
+	}
+	
+	/**
+	 * Determine si l'algo doit considerer le reverse-complement du motif
+	 * 
+	 * @return true si l'algo doit considerer le complement du motif, false sinon
+	 */
+	public boolean takeRevCompl() {
+		return this.takeRevCompl;
+	}
+
 	/**
 	 * Affiche l'entree
 	 */
