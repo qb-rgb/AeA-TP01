@@ -50,6 +50,44 @@ public class Sortie {
 		this.positions = new ArrayList<Integer>();
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((entree == null) ? 0 : entree.hashCode());
+		result = prime * result + ((motif == null) ? 0 : motif.hashCode());
+		result = prime * result
+				+ ((positions == null) ? 0 : positions.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Sortie other = (Sortie) obj;
+		if (entree == null) {
+			if (other.entree != null)
+				return false;
+		} else if (!entree.equals(other.entree))
+			return false;
+		if (motif == null) {
+			if (other.motif != null)
+				return false;
+		} else if (!motif.equals(other.motif))
+			return false;
+		if (positions == null) {
+			if (other.positions != null)
+				return false;
+		} else if (!positions.equals(other.positions))
+			return false;
+		return true;
+	}
+
 	/**
 	 * Donne le motif de la sortie
 	 * 
