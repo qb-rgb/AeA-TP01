@@ -7,10 +7,22 @@ package algo;
  */
 public class AlgoKMP implements Algo {
 
-	@Override
-	public Sortie apply(Entree entree) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public Sortie apply(Entree entree) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+
+
+
+    protected boolean isClean(String motif, String u){
+    
+        return !(
+                u.equals(motif)
+                ); 
+    }
+
+
 
 }
