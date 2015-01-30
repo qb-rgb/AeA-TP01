@@ -98,4 +98,29 @@ public class Motif {
 		return this.reverse(this.getCompl());
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((motif == null) ? 0 : motif.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Motif other = (Motif) obj;
+		if (motif == null) {
+			if (other.motif != null)
+				return false;
+		} else if (!motif.equals(other.motif))
+			return false;
+		return true;
+	}
+
 }
