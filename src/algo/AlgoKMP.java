@@ -35,4 +35,17 @@ public class AlgoKMP implements Algo {
 
     }
 
+    protected boolean isSuffix(String motif, String u){
+        int ml = motif.length();
+        int ul = u.length();
+
+        return u.equals(
+                motif.substring(
+                        ml - ul, 
+                        ml
+                        )
+                );
+
+    }
+
 }
