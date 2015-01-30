@@ -45,9 +45,8 @@ public class Sortie {
 	 * @param motif
 	 * 			motif recherche par l'algorithme
 	 */
-	public Sortie(Entree entree, Motif motif) {
+	public Sortie(Entree entree) {
 		this.entree = entree;
-		this.motif = motif;
 		this.positions = new ArrayList<Integer>();
 	}
 	
