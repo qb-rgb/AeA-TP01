@@ -17,14 +17,9 @@ public class Sortie {
 	///////////////
 	
 	/**
-	 * Nom de la sequence d'ADN de la sortie
+	 * Entree a partir de laquelle a ete generee la sortie
 	 */
-	private String name;
-	
-	/**
-	 * Sequence de nucleotide dans laquelle le motif a ete cherche
-	 */
-	private String sequence;
+	private Entree entree;
 	
 	/**
 	 * Motif qui a ete cherche par l'algorithme
@@ -50,29 +45,10 @@ public class Sortie {
 	 * @param motif
 	 * 			motif recherche par l'algorithme
 	 */
-	public Sortie(String name, String sequence, Motif motif) {
-		this.name = name;
-		this.sequence = sequence;
+	public Sortie(Entree entree, Motif motif) {
+		this.entree = entree;
 		this.motif = motif;
 		this.positions = new ArrayList<Integer>();
-	}
-	
-	/**
-	 * Donne le nom de la sequence d'ADN de la sortie
-	 * 
-	 * @return nom de la sequence d'ADN de la sortie
-	 */
-	public String getName() {
-		return this.name;
-	}
-
-	/**
-	 * Donne la sequence de la sortie
-	 * 
-	 * @return sequence de la sortie
-	 */
-	public String getSequence() {
-		return this.sequence;
 	}
 	
 	/**
@@ -107,16 +83,8 @@ public class Sortie {
 	 * Affiche la sortie
 	 */
 	public void display() {
-        System.out.println("Nom de la séquence : " +
-                this.name                          +
-                "\n"                               +
-                this.sequence                      +
-                "\n"                               +
-                "Motif a rechercher : "            +
-                motif.toString()                   +
-                "\n"                               +
-                "Positions du motif : \n"
-                );
+		System.out.println(this.entree);
+		System.out.println("Position du motif : \n");
         
         for (Integer position : this.positions) {
         	System.out.println(position);
