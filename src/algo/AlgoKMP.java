@@ -16,7 +16,7 @@ public class AlgoKMP implements Algo {
 
     protected boolean isBord(String motif, String u, int i){
         
-        return isBord(motif.substring(0, i-1), u);
+        return isBord(motif.substring(0, i), u);
     }
 
     private boolean isBord(String motif, String u){
@@ -25,6 +25,9 @@ public class AlgoKMP implements Algo {
     }
 
     protected boolean isClean(String motif, String u){
+        if(u.equals(""))
+            return true;
+        
         return !(
                 u.equals(motif)
                 ); 
@@ -32,7 +35,9 @@ public class AlgoKMP implements Algo {
 
     protected boolean isPrefix(String motif, String u){
         int ul = u.length();
-
+        if(u.equals(""))
+                return true;
+        
         return u.equals(
                 motif.substring(
                         0, 
@@ -46,6 +51,9 @@ public class AlgoKMP implements Algo {
         int ml = motif.length();
         int ul = u.length();
 
+        if(u.equals(""))
+            return true;
+        
         return u.equals(
                 motif.substring(
                         ml - ul, 
