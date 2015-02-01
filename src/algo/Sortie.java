@@ -49,6 +49,48 @@ public class Sortie {
 		this.entree = entree;
 		this.positions = new ArrayList<Integer>();
 	}
+
+	/**
+	 * Donne le motif de la sortie
+	 * 
+	 * @return motif de la sortie
+	 */
+	public Motif getMotif() {
+		return this.motif;
+	}
+	
+	/**
+	 * Donne les positions du motif dans la sequence
+	 * 
+	 * @return positions du motif dans la sequence
+	 */
+	public List<Integer> getPositions() {
+		return this.positions;
+	}
+	
+	/**
+	 * Ajoute une position a la liste des positions du motif
+	 * 
+	 * @param position
+	 * 			position a ajouter a la liste des positions du motif
+	 */
+	public void addPosition(int position) {
+		this.positions.add(position);
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append(this.entree + "\n");
+		sb.append("Position du motif : \n");
+        
+        for (Integer position : this.positions) {
+        	sb.append(position + "\n");
+        }
+        
+        return sb.toString();
+    }
 	
 	@Override
 	public int hashCode() {
@@ -87,45 +129,5 @@ public class Sortie {
 			return false;
 		return true;
 	}
-
-	/**
-	 * Donne le motif de la sortie
-	 * 
-	 * @return motif de la sortie
-	 */
-	public Motif getMotif() {
-		return this.motif;
-	}
-	
-	/**
-	 * Donne les positions du motif dans la sequence
-	 * 
-	 * @return positions du motif dans la sequence
-	 */
-	public List<Integer> getPositions() {
-		return this.positions;
-	}
-	
-	/**
-	 * Ajoute une position a la liste des positions du motif
-	 * 
-	 * @param position
-	 * 			position a ajouter a la liste des positions du motif
-	 */
-	public void addPosition(int position) {
-		this.positions.add(position);
-	}
-	
-	/**
-	 * Affiche la sortie
-	 */
-	public void display() {
-		System.out.println(this.entree);
-		System.out.println("Position du motif : \n");
-        
-        for (Integer position : this.positions) {
-        	System.out.println(position);
-        }
-    }	
 
 }
