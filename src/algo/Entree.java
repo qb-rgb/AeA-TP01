@@ -174,18 +174,29 @@ public class Entree {
 		return this.takeRevCompl;
 	}
 
-	/**
-	 * Affiche l'entree
-	 */
-	public void display() {
-        System.out.println("Nom de la séquence : " +
-                this.name                          +
-                "\n"                               +
-                this.sequence                      +
-                "\n"                               +
-                "Motif a rechercher : "            +
-                motif.toString()
-                );
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		
+        sb.append("Nom de la séquence : " +
+                  this.name               +
+                  "\n"                    +
+                  "Sequence : "           +
+                  this.sequence           +
+                  "\n"                    +
+                  "Motif a rechercher : " +
+                  this.motif.toString());
+        
+        if (this.takeReverse)
+        	sb.append(", " + this.motif.getReverse());
+        
+        if (this.takeCompl)
+        	sb.append(", " + this.motif.getCompl());
+        
+        if (this.takeRevCompl)
+        	sb.append(", " + this.motif.getRevCompl());
+        
+        return sb.toString();
     }
 
 	@Override
