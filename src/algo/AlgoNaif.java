@@ -7,7 +7,7 @@ import adn.Motif;
  * 
  * @author Quentin Baert & Alexandre Verkyndt
  */
-public class AlgoNaif implements Algo {
+public class AlgoNaif extends Algo {
 	
 	///////////////
 	// ATTRIBUTS //
