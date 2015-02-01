@@ -47,7 +47,7 @@ public class AlgoNaif extends Algo {
 
 		for (int i = 0; i < sequence.length() - motifLen; i++) {
 			String window = sequence.substring(i, i + motifLen);
-			if (window.equals(motifStr))
+			if (this.acceptFor(motif, window, entree))
 				sortie.addPosition(i);
 		}
 		
