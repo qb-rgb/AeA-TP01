@@ -9,8 +9,9 @@ import adn.Motif;
  */
 public abstract class Algo {
 
-	// Determine si un mot est accepte par l'algorithme en fonction d'une entree
-	protected boolean acceptFor(Motif motif, String word, Entree entree) {
+	protected boolean acceptFor(String word, Entree entree) {
+		Motif motif = entree.getMotif();
+		
 		if (word.equals(motif.getMotif()))
 			return true;
 		else if (entree.takeCompl() && word.equals(motif.getCompl()))
