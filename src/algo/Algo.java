@@ -9,6 +9,15 @@ import adn.Motif;
  */
 public abstract class Algo {
 
+	/**
+	 * Determine si un mot est accepte par l'algorithme en fonction d'une entree
+	 * 
+	 * @param word
+	 * 			mot a determiner si l'algo doit le prendre en compte ou non
+	 * @param entree
+	 * 			entree de l'algo
+	 * @return true si l'algo doit considerer le mot en fonction de l'entree, false sinon
+	 */
 	protected boolean acceptFor(String word, Entree entree) {
 		Motif motif = entree.getMotif();
 		
