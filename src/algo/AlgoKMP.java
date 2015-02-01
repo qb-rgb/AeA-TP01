@@ -5,7 +5,7 @@ package algo;
  * 
  * @author Quentin Baert & Alexandre Verkyndt
  */
-public class AlgoKMP implements Algo {
+public class AlgoKMP extends Algo {
 
     @Override
     public Sortie apply(Entree entree) {
