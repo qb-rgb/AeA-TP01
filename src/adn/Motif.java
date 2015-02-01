@@ -97,6 +97,11 @@ public class Motif {
 	public String getRevCompl() {
 		return this.reverse(this.getCompl());
 	}
+	
+	@Override
+	public String toString() {
+		return this.motif;
+	}
 
 	@Override
 	public int hashCode() {
