@@ -16,7 +16,7 @@ import algo.Sortie;
  */
 public class AlgoNaifTest {
 	
-	private String sequence = "ACCCAGTACGACCGAATG";
+	private String sequence = "CACCAGTACGACCGAATG";
 	private AlgoNaif algo = AlgoNaif.getInstance();
 	
 	@Test
@@ -26,7 +26,7 @@ public class AlgoNaifTest {
 		Sortie sortie = new Sortie(entree);
 		
 		// Ajout des positions attendues
-		sortie.addPosition(0);
+		sortie.addPosition(1);
 		sortie.addPosition(7);
 		sortie.addPosition(10);
 		
@@ -48,10 +48,11 @@ public class AlgoNaifTest {
 		Entree entree = new Entree("entreeTest", sequence, motif, true, false, false);
 		Sortie sortie = new Sortie(entree);
 		
-		// Selon l'entree, l'algo doit prendre en compte le motif simple ainsi que son reverse
+		// AC, CA
 		
 		// Ajout des positions attendues
 		sortie.addPosition(0);
+		sortie.addPosition(1);
 		sortie.addPosition(3);
 		sortie.addPosition(7);
 		sortie.addPosition(10);
@@ -65,19 +66,52 @@ public class AlgoNaifTest {
 		Entree entree = new Entree("entreeTest", sequence, motif, false, true, false);
 		Sortie sortie = new Sortie(entree);
 		
-		// Selon l'entree, l'algo doit prendre en compte le motif simple ainsi que son complement
+		// AC, TG
 		
 		// Ajout des positions attendues
-		sortie.addPosition(0);
+		sortie.addPosition(1);
 		sortie.addPosition(7);
 		sortie.addPosition(10);
 		sortie.addPosition(16);
 		
 		assertEquals(sortie, algo.apply(entree));
 	}
-
-	/*
-	 * Faire tests pour toutes les dispositions de l'entree + faire tests pour motif aux bornes de la sequence
-	 */
-
+	
+	@Test
+	public void testAlgoMotifRevCompl() {
+		Motif motif = new Motif("AC");
+		Entree entree = new Entree("entreeTest", sequence, motif, false, false, true);
+		Sortie sortie = new Sortie(entree);
+		
+		// AC, GT
+		
+		// Ajout des positions attendues
+		sortie.addPosition(1);
+		sortie.addPosition(5);
+		sortie.addPosition(7);
+		sortie.addPosition(10);
+		
+		assertEquals(sortie, algo.apply(entree));
+	}
+	
+	@Test
+	public void testAlgoMotifAll() {
+		Motif motif = new Motif("AC");
+		Entree entree = new Entree("entreeTest", sequence, motif, true, true, true);
+		Sortie sortie = new Sortie(entree);
+		
+		// AC, CA, TG, GT
+		
+		// Ajout des positions attendues
+		sortie.addPosition(0);
+		sortie.addPosition(1);
+		sortie.addPosition(3);
+		sortie.addPosition(5);
+		sortie.addPosition(7);
+		sortie.addPosition(10);
+		sortie.addPosition(16);
+		
+		assertEquals(sortie, algo.apply(entree));
+	}
+	
 }
