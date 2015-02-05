@@ -138,6 +138,7 @@ public class AlgoKMP extends Algo {
 		return res;
 	}
 	
+	// Determine si l'algo doit s'arreter ou non
 	private boolean isFinished(List<Integer> l, int length) {
 		for (Integer i : l) {
 			if (i <= length)
@@ -160,25 +161,39 @@ public class AlgoKMP extends Algo {
 		// Sortie
 		Sortie sortie = new Sortie(entree);
 		
+		// Ces deux listes permettent de gerer toutes les formes du motif en un seul parcours de sequence
 		List<Couple> preProcesses = this.getPreProcessFor(entree);
 		List<Integer> indexes = new ArrayList<Integer>();
 		
+		// Les indexes de chaques fenetres commencent a 0
 		for (int i = 0; i < preProcesses.size(); i++)
 			indexes.add(0);
 		
+		// Au dela de cette position, une fenetre sortirai de la sequence
 		int maxLen = sequence.length() - motifLen;
 		
+		// Tant que tous les indexes de toutes les fenetres ne sont pas arrives au bout de la sequence
 		while (!this.isFinished(indexes, sequence.length() - motifLen)) {
+			// Le corps de l'algo est execute sur chacune des fenetre
 			for (int preProcessNb = 0; preProcessNb < preProcesses.size(); preProcessNb++) {
 				Couple couple = preProcesses.get(preProcessNb);
+				// Index de la fenetre courante
 				int index = indexes.get(preProcessNb);
+
+				// Si l'indexe n'est pas arrive au bout de la sequence
 				if (index <= maxLen) {
+					// Motif a trouver dans la sequence (motif ou reverse ou complement ou ...)
 					String motifToFind = couple.getMotif();
+					// Tableau de pre-traitement du motif
 					int[] preProcess = couple.getPreProcess();
+					// Fenetre
 					String window = sequence.substring(index, index + motifLen);
 
+					// Indexe qui servira a determiner l'indice de la fenetre ou l'erreur est apparue
 					int indexError = 0;
 					boolean stop = false;
+					
+					// On cherche la prochaine erreur (nucleotide qui ne correspond pas au motif)
 					while ((indexError <= motifLen) && !stop) {
 						if (indexError == motifLen)
 							stop = true;
@@ -188,11 +203,16 @@ public class AlgoKMP extends Algo {
 							indexError++;
 					}
 				
+					// Si toutes la fenetre a ete parcourue sans erreur ...
 					if (indexError == motifLen)
+						// ... le motif a ete trouve et sa position et ajoute a la sortie
 						sortie.addPosition(index);
 				
+					/*
+					 * Le prochain indice de la sequence a considerer pour ce motif est calcule
+					 * a partir de l'indice d'erreur et du tableau de pre-traitement
+					 */
 					indexes.set(preProcessNb, index + (indexError - preProcess[indexError]));
-
 				}
 			}
 		}
