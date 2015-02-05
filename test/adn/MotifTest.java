@@ -43,4 +43,26 @@ public class MotifTest {
 		assertEquals(motif.getRevCompl(), "TGCCATACGTACACGT");
 		assertEquals(motifVide.getRevCompl(), "");
 	}
+	
+	@Test
+	public void testHasPrefix() {
+		assertTrue(motif.hasPrefix("ACGT"));
+		assertFalse(motif.hasPrefix("AGCT"));
+
+		// Un motif est prefixe de lui meme
+		assertTrue(motif.hasPrefix(motifStr));
+		
+		// La chaine vide est prefix d'un motif
+		assertTrue(motif.hasPrefix(""));
+	}
+	
+	@Test
+	public void testHasPrefixMotifVide() {
+		// Un motif vide ne possede aucun prefix ...
+		assertFalse(motifVide.hasPrefix("ACGT"));
+		
+		// ... excepte la chaine vide
+		assertTrue(motifVide.hasPrefix(""));
+	}
+
 }
