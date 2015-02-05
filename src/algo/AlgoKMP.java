@@ -51,9 +51,8 @@ public class AlgoKMP extends Algo {
 	 * 			motif a pre-traiter
 	 * @return tableau de pre-traitement du motif
 	 */
-	public int[] preProcessing(Motif motif) {
-		String motifStr = motif.getMotif();
-		int length = motifStr.length();
+	public int[] preProcessing(String motif) {
+		int length = motif.length();
 		int[] res = new int[length + 1];
 		
 		/*
@@ -69,7 +68,7 @@ public class AlgoKMP extends Algo {
 			int max = -1;
 			
 			// motif(0 .. i - 1)
-			Motif u = new Motif(motifStr.substring(0, i));
+			Motif u = new Motif(motif.substring(0, i));
 			
 			/*
 			 * Recherche du long bord de u
@@ -79,14 +78,14 @@ public class AlgoKMP extends Algo {
 			 */
 			for (int j = 0; j < (i / 2) + 1; j++) {
 				// Bord potentiel
-				String edge = motifStr.substring(0, j);
+				String edge = motif.substring(0, j);
 				int l = -1;
 				
 				// Si le bord est le mot vide ou que c'est effectivement un bord de u
 				if (edge.isEmpty() || u.hasEdge(edge)) {
 					// Si on ne rempli pas la derniere case du tableau resultat ...
 					if (i < length) {
-						char mi = motifStr.charAt(i);
+						char mi = motif.charAt(i);
 						
 						// ... il faut encore verifier que (u + motif(i)) n'est pas un prefix de motif
 						if (!u.hasPrefix(edge + mi))
