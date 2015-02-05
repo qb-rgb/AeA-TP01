@@ -101,6 +101,8 @@ public class Motif {
 	/**
 	 * Determine si une chaine de caracteres est un prefixe de ce motif
 	 * 
+	 * @param s
+	 * 			chaine de caracteres dont on souhaite savoir si elle est prefixe du motif
 	 * @return true si la chaine est un prefixe de ce motif, false sinon
 	 */
 	public boolean hasPrefix(String s) {
@@ -110,6 +112,8 @@ public class Motif {
 	/**
 	 * Determine si une chaine de caracteres est un suffixe de ce motif
 	 * 
+	 * @param s
+	 * 			chaine de caractere dont on souhaite savoir si elle est suffixe du motif
 	 * @return true si la chaine est un suffixe de ce motif, false sinon
 	 */
 	public boolean hasSuffix(String s) {
