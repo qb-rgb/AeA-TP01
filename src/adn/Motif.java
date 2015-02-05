@@ -99,7 +99,7 @@ public class Motif {
 	}
 	
 	/**
-	 * Determine si une chaine de caracteres est un prefix de ce motif
+	 * Determine si une chaine de caracteres est un prefixe de ce motif
 	 * 
 	 * @return true si la chaine est un prefixe de ce motif, false sinon
 	 */
