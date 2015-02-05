@@ -85,5 +85,26 @@ public class MotifTest {
 		// ... excepte la chaine vide
 		assertTrue(motifVide.hasSuffix(""));
 	}
-
+	
+	@Test
+	public void testHasEdge() {
+		String str = "ACGTTTTTTTTTTTTTTTTTACGT";
+		Motif motif = new Motif(str);
+		
+		assertTrue(motif.hasEdge("ACGT"));
+		assertFalse(motif.hasEdge("TACGT"));
+		
+		// La chaine vide n'est pas un bord d'un motif
+		assertFalse(motif.hasEdge(""));
+		
+		// La chaine representant le motif n'est pas un bord du motif
+		assertFalse(motif.hasEdge(str));
+	}
+	
+	@Test
+	public void testHasEdgeMotifVide() {
+		// Par definition, le motif vide ne peut avoir de bord
+		assertFalse(motifVide.hasEdge("ACGT"));
+		assertFalse(motifVide.hasEdge(""));
+	}
 }
