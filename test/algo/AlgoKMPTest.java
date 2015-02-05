@@ -43,8 +43,6 @@ public class AlgoKMPTest {
 		int[] res1 = {-1, 0, 0, -1, 0, 2, 0, 0};
 		int[] res2 = {-1, 0, 0, -1, 0, 0, 3};
 		
-		
-		
 		assertTrue(checkIntArraysEquality(algo.preProcessing(motif1.getMotif()), res1));
 		assertTrue(checkIntArraysEquality(algo.preProcessing(motif2.getMotif()), res2));
 	}
