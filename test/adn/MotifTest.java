@@ -52,13 +52,13 @@ public class MotifTest {
 		// Un motif est prefixe de lui meme
 		assertTrue(motif.hasPrefix(motifStr));
 		
-		// La chaine vide est prefix d'un motif
+		// La chaine vide est prefixe d'un motif
 		assertTrue(motif.hasPrefix(""));
 	}
 	
 	@Test
 	public void testHasPrefixMotifVide() {
-		// Un motif vide ne possede aucun prefix ...
+		// Un motif vide ne possede aucun prefixe ...
 		assertFalse(motifVide.hasPrefix("ACGT"));
 		
 		// ... excepte la chaine vide
