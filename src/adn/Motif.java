@@ -107,6 +107,15 @@ public class Motif {
 		return this.motif.startsWith(s);
 	}
 	
+	/**
+	 * Determine si une chaine de caracteres est un suffixe de ce motif
+	 * 
+	 * @return true si la chaine est un suffixe de ce motif, false sinon
+	 */
+	public boolean hasSuffix(String s) {
+		return this.motif.endsWith(s);
+	}
+	
 	@Override
 	public String toString() {
 		return this.motif;
