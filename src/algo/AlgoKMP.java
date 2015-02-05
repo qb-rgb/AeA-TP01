@@ -138,6 +138,15 @@ public class AlgoKMP extends Algo {
 		return res;
 	}
 	
+	private boolean isFinished(List<Integer> l, int length) {
+		for (Integer i : l) {
+			if (i <= length)
+				return false;
+		}
+		
+		return true;
+	}
+	
 	@Override
 	public Sortie apply(Entree entree) {
 	}
