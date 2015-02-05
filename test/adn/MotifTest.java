@@ -64,5 +64,26 @@ public class MotifTest {
 		// ... excepte la chaine vide
 		assertTrue(motifVide.hasPrefix(""));
 	}
+	
+	@Test
+	public void testHasSuffix() {
+		assertTrue(motif.hasSuffix("GGCA"));
+		assertFalse(motif.hasSuffix("GCGA"));
+		
+		// Un motif est suffixe de lui meme
+		assertTrue(motif.hasSuffix(motifStr));
+		
+		// La chaine vide est suffixe d'un motif
+		assertTrue(motif.hasSuffix(""));
+	}
+	
+	@Test
+	public void testHasSuffixMotifVide() {
+		// Un motif vide ne possede aucun suffixe ...
+		assertFalse(motifVide.hasSuffix("ACGT"));
+		
+		// ... excepte la chaine vide
+		assertTrue(motifVide.hasSuffix(""));
+	}
 
 }
