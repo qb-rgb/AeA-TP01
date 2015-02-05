@@ -10,7 +10,7 @@ import algo.Entree;
 import algo.Sortie;
 
 /**
- * Classe de tests pourla classe AlgoNaif
+ * Classe de tests pour la classe AlgoNaif
  * 
  * @author Quentin Baert & Alexandre Verkyndt
  */
