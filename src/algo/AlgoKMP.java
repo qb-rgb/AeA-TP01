@@ -5,7 +5,7 @@ package algo;
  * 
  * @author Quentin Baert & Alexandre Verkyndt
  */
-public class AlgoKMP {
+public class AlgoKMP extends Algo {
 	
 	///////////////
 	// ATTRIBUTS //
@@ -28,6 +28,12 @@ public class AlgoKMP {
 	 */
 	public static AlgoKMP getInstance() {
 		return instance;
+	}
+
+	@Override
+	public Sortie apply(Entree entree) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
