@@ -45,8 +45,8 @@ public class AlgoKMPTest {
 		
 		
 		
-		assertTrue(checkIntArraysEquality(algo.preProcessing(motif1), res1));
-		assertTrue(checkIntArraysEquality(algo.preProcessing(motif2), res2));
+		assertTrue(checkIntArraysEquality(algo.preProcessing(motif1.getMotif()), res1));
+		assertTrue(checkIntArraysEquality(algo.preProcessing(motif2.getMotif()), res2));
 	}
 
 }
