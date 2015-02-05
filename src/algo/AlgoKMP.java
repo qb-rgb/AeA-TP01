@@ -1,5 +1,8 @@
 package algo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import adn.Motif;
 
 /**
@@ -107,7 +110,26 @@ public class AlgoKMP extends Algo {
 		
 		return res;
 	}
+	
+	// Donne les pre-traitements des differentes formes du motif en fonction de l'entree
+	private List<int[]> getPreProcessFor(Entree entree) {
+		List<int[]> res = new ArrayList<int[]>();
+		Motif motif = entree.getMotif();
+		
+		res.add(this.preProcessing(motif.getMotif()));
+		
+		if (entree.takeReverse())
+			res.add(this.preProcessing(motif.getReverse()));
+		
+		if (entree.takeCompl())
+			res.add(this.preProcessing(motif.getReverse()));
+		
+		if (entree.takeRevCompl())
+			res.add(this.preProcessing(motif.getRevCompl()));
 
+		return res;
+	}
+	
 	@Override
 	public Sortie apply(Entree entree) {
 		// TODO Auto-generated method stub
