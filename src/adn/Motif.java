@@ -21,7 +21,7 @@ public class Motif {
 	private boolean checkSyntax(String motif) {
 		for (int i = 0; i < motif.length(); i++) {	
 			char nucl = motif.charAt(i);
-			if ((nucl != 'A') && (nucl != 'C') && (nucl != 'G') && (nucl != 'T'))
+			if ((nucl != 'A') && (nucl != 'C') && (nucl != 'G') && (nucl != 'T') && (nucl != 'U'))
 			   return false;
 		}
 		return true;
