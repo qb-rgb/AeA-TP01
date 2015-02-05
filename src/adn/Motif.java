@@ -98,6 +98,15 @@ public class Motif {
 		return this.reverse(this.getCompl());
 	}
 	
+	/**
+	 * Determine si une chaine de caracteres est un prefix de ce motif
+	 * 
+	 * @return true si la chaine est un prefixe de ce motif, false sinon
+	 */
+	public boolean hasPrefix(String s) {
+		return this.motif.startsWith(s);
+	}
+	
 	@Override
 	public String toString() {
 		return this.motif;
