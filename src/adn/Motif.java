@@ -120,6 +120,20 @@ public class Motif {
 		return this.motif.endsWith(s);
 	}
 	
+	/**
+	 * Determine si une chaine de caracteres est un bord de ce motif
+	 * 
+	 * @param s
+	 * 			chaine de caracteres dont on souhaite savoir si elle est un bord du motif
+	 * @return true si la chaine est un bord de ce motif, false sinon
+	 */
+	public boolean hasEdge(String s) {
+		return !s.isEmpty() &&
+			   !s.equals(this.motif) &&
+			   this.hasPrefix(s) &&
+			   this.hasSuffix(s);
+	}
+	
 	@Override
 	public String toString() {
 		return this.motif;
