@@ -149,6 +149,55 @@ public class AlgoKMP extends Algo {
 	
 	@Override
 	public Sortie apply(Entree entree) {
+		// Motif
+		Motif motif = entree.getMotif();
+		String motifStr = motif.getMotif();
+		int motifLen = motifStr.length();
+		
+		// Sequence
+		String sequence = entree.getSequence();
+		
+		// Sortie
+		Sortie sortie = new Sortie(entree);
+		
+		List<Couple> preProcesses = this.getPreProcessFor(entree);
+		List<Integer> indexes = new ArrayList<Integer>();
+		
+		for (int i = 0; i < preProcesses.size(); i++)
+			indexes.add(0);
+		
+		int maxLen = sequence.length() - motifLen;
+		
+		while (!this.isFinished(indexes, sequence.length() - motifLen)) {
+			for (int preProcessNb = 0; preProcessNb < preProcesses.size(); preProcessNb++) {
+				Couple couple = preProcesses.get(preProcessNb);
+				int index = indexes.get(preProcessNb);
+				if (index <= maxLen) {
+					String motifToFind = couple.getMotif();
+					int[] preProcess = couple.getPreProcess();
+					String window = sequence.substring(index, index + motifLen);
+
+					int indexError = 0;
+					boolean stop = false;
+					while ((indexError <= motifLen) && !stop) {
+						if (indexError == motifLen)
+							stop = true;
+						else if (window.charAt(indexError) != motifToFind.charAt(indexError))
+							stop = true;
+						else
+							indexError++;
+					}
+				
+					if (indexError == motifLen)
+						sortie.addPosition(index);
+				
+					indexes.set(preProcessNb, index + (indexError - preProcess[indexError]));
+
+				}
+			}
+		}
+		
+		return sortie;
 	}
 	
 	////////////////////
