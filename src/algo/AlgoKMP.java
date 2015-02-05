@@ -112,28 +112,58 @@ public class AlgoKMP extends Algo {
 	}
 	
 	// Donne les pre-traitements des differentes formes du motif en fonction de l'entree
-	private List<int[]> getPreProcessFor(Entree entree) {
-		List<int[]> res = new ArrayList<int[]>();
+	private List<Couple> getPreProcessFor(Entree entree) {
+		List<Couple> res = new ArrayList<Couple>();
 		Motif motif = entree.getMotif();
 		
-		res.add(this.preProcessing(motif.getMotif()));
+		res.add(new Couple(
+				motif.getMotif(),
+				this.preProcessing(motif.getMotif())));
 		
 		if (entree.takeReverse())
-			res.add(this.preProcessing(motif.getReverse()));
+			res.add(new Couple(
+					motif.getReverse(),
+					this.preProcessing(motif.getReverse())));
 		
 		if (entree.takeCompl())
-			res.add(this.preProcessing(motif.getReverse()));
+			res.add(new Couple(
+					motif.getCompl(),
+					this.preProcessing(motif.getReverse())));
 		
 		if (entree.takeRevCompl())
-			res.add(this.preProcessing(motif.getRevCompl()));
+			res.add(new Couple(
+					motif.getRevCompl(),
+					this.preProcessing(motif.getRevCompl())));
 
 		return res;
 	}
 	
 	@Override
 	public Sortie apply(Entree entree) {
-		// TODO Auto-generated method stub
-		return null;
+	}
+	
+	////////////////////
+	// CLASSE INTERNE //
+	////////////////////
+
+	private class Couple {
+
+		private String motif;
+		private int[] preProcess;
+		
+		public Couple(String motif, int[] preProcess) {
+			this.motif = motif;
+			this.preProcess = preProcess;
+		}
+		
+		public String getMotif() {
+			return this.motif;
+		}
+		
+		public int[] getPreProcess() {
+			return this.preProcess;
+		}
+
 	}
 
 }
