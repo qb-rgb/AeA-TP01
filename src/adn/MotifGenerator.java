@@ -114,5 +114,18 @@ public class MotifGenerator {
 
         return list_tmp;
     }
+    
+    public static void main(String[] args) {
+        MotifGenerator mg = MotifGenerator.getInstance();
+        
+        ArrayList<Motif> list = (ArrayList<Motif>) mg.getMotifsOfLength(4);
+        
+        String result = "";
+        for (Motif motif : list) {
+            result += motif.getMotif() + "\n";
+        }
+        
+        System.out.println(result);
+     }
 
 }
