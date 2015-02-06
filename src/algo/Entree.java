@@ -141,16 +141,6 @@ public class Entree {
 	}
 	
 	/**
-	 * Change le motif de l'entree
-	 * 
-	 * @param motif
-	 * 			nouveau motif de l'entree
-	 */
-	public void setMotif(Motif motif) {
-		this.motif = motif;
-	}
-	
-	/**
 	 * Determine si l'algo doit considerer le reverse du motif
 	 * 
 	 * @return true si l'algo doit considerer le reverse du motif, false sinon
