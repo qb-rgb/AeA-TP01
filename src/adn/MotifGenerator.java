@@ -74,28 +74,8 @@ public class MotifGenerator {
     private boolean isLastNucleotide(char nucleotide) {
         return (nucleotide == 'T') || (nucleotide == 'U');
     }
-
-    /*
-	private String incremente(String motif) {
-		int length = motif.length();
-		StringBuilder sb = new StringBuilder(length);
-		boolean stop = false;
-		int i = length - 1;
-		
-		while ((i >= 0) && !stop){
-			if (this.isLastNucleotide(motif.charAt(i))) {
-				for (int j = i; j < length; j++)
-					sb.insert(i, this.incremente(motif.charAt(j)));
-				
-				stop = true;
-			}
-			else
-				
-		}
-		
-		return sb.toString();
-	}
-	*/
+    
+    
 
     public List<Motif> getMotifsOfLength(int length) {
         //Liste qui sera retournee
