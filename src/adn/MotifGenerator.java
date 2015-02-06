@@ -60,14 +60,14 @@ public class MotifGenerator {
 	}
 	
 	// Retourne le premier motif de taille length
-	private String getFirstMotifOfLength(int length) {
+	private StringBuilder getFirstMotifOfLength(int length) {
 		StringBuilder sb = new StringBuilder();
 		
 		for (int i = 0; i < length; i++) {
 			sb.append('A');
 		}
 		
-		return sb.toString();
+		return sb;
 	}
 	
 	// Determine si un nucleotide est le dernier ou non
