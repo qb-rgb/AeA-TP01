@@ -78,7 +78,7 @@ public class Entree {
      * @param chemin
      * @throws IOException
      */
-    public Entree(String path) throws IOException {
+    public Entree(String path, Motif motif, boolean takeReverse, boolean takeCompl, boolean takeRevCompl) throws IOException {
 
         // br sert à lire le fichier ligne par ligne
         BufferedReader br = new BufferedReader(new  FileReader(path));
@@ -105,9 +105,12 @@ public class Entree {
             this.sequence += ligne;
         }
         
-        // Le motif est positionner a null le temps d'etre reference
-        this.motif = null;
         br.close();
+
+        this.motif = motif;
+        this.takeReverse = takeReverse;
+        this.takeCompl = takeCompl;
+        this.takeRevCompl = takeRevCompl;
     }
     
 	/**
