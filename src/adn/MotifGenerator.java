@@ -47,8 +47,8 @@ public class MotifGenerator {
 	}
 	
 	// Determine si motif est le dernier motid de taille length
-	private boolean isLastMotifOfLength(Motif motif, int length) {
-		String motifStr = motif.getMotif();
+	private boolean isLastMotifOfLength(String motifStr, int length) {
+		
 
 		for (int i = 0; i < motifStr.length(); i++) {
 			char nucleotide = motifStr.charAt(i);
