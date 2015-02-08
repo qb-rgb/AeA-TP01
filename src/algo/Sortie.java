@@ -1,7 +1,7 @@
 package algo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import adn.Motif;
 
@@ -29,7 +29,7 @@ public class Sortie {
 	/**
 	 * Liste des position auxquelles le motif a ete trouve par l'algorithme
 	 */
-	private List<Integer> positions;
+	private Set<Integer> positions;
 	
 	//////////////
 	// METHODES //
@@ -47,7 +47,7 @@ public class Sortie {
 	 */
 	public Sortie(Entree entree) {
 		this.entree = entree;
-		this.positions = new ArrayList<Integer>();
+		this.positions = new TreeSet<Integer>();
 	}
 
 	/**
@@ -64,7 +64,7 @@ public class Sortie {
 	 * 
 	 * @return positions du motif dans la sequence
 	 */
-	public List<Integer> getPositions() {
+	public Set<Integer> getPositions() {
 		return this.positions;
 	}
 	
