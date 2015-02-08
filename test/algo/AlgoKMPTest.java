@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import adn.Motif;
+import adn.MotifADN;
 
 /**
  * Classe de tests pour la classe AlgoKMPTest
@@ -37,8 +37,8 @@ public class AlgoKMPTest {
 		 * tableaux resultats
 		 */
 
-		Motif motif1 = new Motif("TACTAGA");
-		Motif motif2 = new Motif("TAGTAG");
+		MotifADN motif1 = new MotifADN("TACTAGA");
+		MotifADN motif2 = new MotifADN("TAGTAG");
 		
 		// Tableaux resultats attendus
 		int[] res1 = {-1, 0, 0, -1, 0, 2, 0, 0};
@@ -50,7 +50,7 @@ public class AlgoKMPTest {
 	
 	@Test
 	public void testAlgoMotifSimplePresent() {
-		Motif motif = new Motif("AC");
+		MotifADN motif = new MotifADN("AC");
 		Entree entree = new Entree("entreeTest", sequence, motif, false, false, false);
 		Sortie sortie = new Sortie(entree);
 		
@@ -64,7 +64,7 @@ public class AlgoKMPTest {
 	
 	@Test
 	public void testAlgoMotifSimpleAbsent() {
-		Motif motif = new Motif("TC");
+		MotifADN motif = new MotifADN("TC");
 		Entree entree = new Entree("entreeTest", sequence, motif, false, false, false);
 		Sortie sortie = new Sortie(entree);
 		
@@ -73,7 +73,7 @@ public class AlgoKMPTest {
 	
 	@Test
 	public void testAlgoMotifRev() {
-		Motif motif = new Motif("AC");
+		MotifADN motif = new MotifADN("AC");
 		Entree entree = new Entree("entreeTest", sequence, motif, true, false, false);
 		Sortie sortie = new Sortie(entree);
 		
@@ -91,7 +91,7 @@ public class AlgoKMPTest {
 	
 	@Test
 	public void testAlgoMotifCompl() {
-		Motif motif = new Motif("AC");
+		MotifADN motif = new MotifADN("AC");
 		Entree entree = new Entree("entreeTest", sequence, motif, false, true, false);
 		Sortie sortie = new Sortie(entree);
 		
@@ -108,7 +108,7 @@ public class AlgoKMPTest {
 	
 	@Test
 	public void testAlgoMotifRevCompl() {
-		Motif motif = new Motif("AC");
+		MotifADN motif = new MotifADN("AC");
 		Entree entree = new Entree("entreeTest", sequence, motif, false, false, true);
 		Sortie sortie = new Sortie(entree);
 		
@@ -125,7 +125,7 @@ public class AlgoKMPTest {
 	
 	@Test
 	public void testAlgoMotifAll() {
-		Motif motif = new Motif("AC");
+		MotifADN motif = new MotifADN("AC");
 		Entree entree = new Entree("entreeTest", sequence, motif, true, true, true);
 		Sortie sortie = new Sortie(entree);
 		
