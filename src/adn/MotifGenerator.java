@@ -77,13 +77,13 @@ public class MotifGenerator {
     
     
 
-    public List<Motif> getMotifsOfLength(int length) {
+    public List<String> getMotifsOfLength(int length) {
         //Liste qui sera retournee
-        ArrayList<Motif> list_tmp = new ArrayList<Motif>();
+        ArrayList<String> list_tmp = new ArrayList<String>();
         //recuperation du premier motif
         StringBuilder motif_tmp = getFirstMotifOfLength(length);
         //ajout de celui ci dans la liste
-        list_tmp.add(new Motif(motif_tmp.toString()));
+        list_tmp.add(motif_tmp.toString());
 
         // - ici commence la boucle qui va generer tout les motif possible de longueur @length
         // - cette ne termine que lorsque le dernier motif a ete genere
@@ -107,8 +107,7 @@ public class MotifGenerator {
                 motif_tmp.setCharAt(i, nextChar_tmp2);
             }
             motif_tmp.setCharAt(0, nextChar_tmp);
-            System.out.println(motif_tmp.toString());
-            list_tmp.add(new Motif(motif_tmp.toString()));
+            list_tmp.add(motif_tmp.toString());
             
         }
 
