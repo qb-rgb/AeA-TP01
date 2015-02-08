@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import adn.Motif;
+import adn.MotifBio;
 
 /**
  * Algorithme de recherche de motif KMP
@@ -114,7 +115,7 @@ public class AlgoKMP extends Algo {
 	// Donne les pre-traitements des differentes formes du motif en fonction de l'entree
 	private List<Couple> getPreProcessFor(Entree entree) {
 		List<Couple> res = new ArrayList<Couple>();
-		Motif motif = entree.getMotif();
+		MotifBio motif = entree.getMotif();
 		
 		res.add(new Couple(
 				motif.getMotif(),
@@ -151,7 +152,7 @@ public class AlgoKMP extends Algo {
 	@Override
 	public Sortie apply(Entree entree) {
 		// Motif
-		Motif motif = entree.getMotif();
+		MotifBio motif = entree.getMotif();
 		String motifStr = motif.getMotif();
 		int motifLen = motifStr.length();
 		
