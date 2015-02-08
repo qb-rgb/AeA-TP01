@@ -117,14 +117,16 @@ public class MotifGenerator {
     public static void main(String[] args) {
         MotifGenerator mg = MotifGenerator.getInstance();
         
-        ArrayList<Motif> list = (ArrayList<Motif>) mg.getMotifsOfLength(4);
+        List<String> list = mg.getMotifsOfLength(4);
         
-        String result = "";
-        for (Motif motif : list) {
-            result += motif.getMotif() + "\n";
+        StringBuilder result = new StringBuilder();
+        for (String motif : list) {
+            result.append(motif + "\n");
         }
         
-        System.out.println(result);
+        System.out.println(result.toString());
+        
+        System.out.println(list.size());
      }
 
 }
