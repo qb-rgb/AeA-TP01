@@ -99,7 +99,7 @@ public class MotifGenerator {
             if(nextChar_tmp == 'A'){
                 i++;
                 nextChar_tmp2 = incremente(motif_tmp.charAt(i));
-                while(nextChar_tmp2 == 'A' && i<3){
+                while(nextChar_tmp2 == 'A' && i<length - 1){
                     motif_tmp.setCharAt(i, 'A');
                     i++;
                     nextChar_tmp2 = incremente(motif_tmp.charAt(i));
