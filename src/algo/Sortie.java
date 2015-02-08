@@ -3,7 +3,7 @@ package algo;
 import java.util.Set;
 import java.util.TreeSet;
 
-import adn.Motif;
+import adn.MotifADN;
 
 /**
  * Sortie d'un algorithme de recherche de motif.
@@ -24,7 +24,7 @@ public class Sortie {
 	/**
 	 * Motif qui a ete cherche par l'algorithme
 	 */
-	private Motif motif;
+	private MotifADN motif;
 	
 	/**
 	 * Liste des position auxquelles le motif a ete trouve par l'algorithme
@@ -55,7 +55,7 @@ public class Sortie {
 	 * 
 	 * @return motif de la sortie
 	 */
-	public Motif getMotif() {
+	public MotifADN getMotif() {
 		return this.motif;
 	}
 	
