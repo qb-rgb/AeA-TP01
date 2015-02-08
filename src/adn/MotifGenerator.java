@@ -35,13 +35,24 @@ public class MotifGenerator {
     }
 
     // "Incremente" un nucleotide
-    private char incremente(char nucleotide) {
+    private char incrementeADN(char nucleotide) {
         if (nucleotide == 'A')
             return 'C';
         else if (nucleotide == 'C')
             return 'G';
         else if (nucleotide == 'G')
             return 'T';
+        else
+            return 'A';
+    }
+    
+    private char incrementeARN(char nucleotide) {
+    	if (nucleotide == 'A')
+            return 'C';
+        else if (nucleotide == 'C')
+            return 'G';
+        else if (nucleotide == 'G')
+            return 'U';
         else
             return 'A';
     }
@@ -77,7 +88,7 @@ public class MotifGenerator {
     
     
 
-    public List<String> getMotifsOfLength(int length) {
+    private List<String> getMotifsOfLength(int length, boolean generateARN) {
         //Liste qui sera retournee
         ArrayList<String> list_tmp = new ArrayList<String>();
         //recuperation du premier motif
@@ -93,16 +104,28 @@ public class MotifGenerator {
         while(! isLastMotifOfLength(motif_tmp.toString(), length)){
             i = 0;
             //on incremente le premier caractere du motif
-            nextChar_tmp = incremente(motif_tmp.charAt(0));
+            if (generateARN)
+            	nextChar_tmp = incrementeARN(motif_tmp.charAt(0));
+            else
+            	nextChar_tmp = incrementeADN(motif_tmp.charAt(0));
+            	
             
             //si l'increment genere un A, cela signifie que l'on doit incremente la deuxième lettre au moins
             if(nextChar_tmp == 'A'){
                 i++;
-                nextChar_tmp2 = incremente(motif_tmp.charAt(i));
+                if (generateARN)
+                	nextChar_tmp2 = incrementeARN(motif_tmp.charAt(i));
+                else
+                	nextChar_tmp2 = incrementeADN(motif_tmp.charAt(i));
+                	
                 while(nextChar_tmp2 == 'A' && i<length - 1){
                     motif_tmp.setCharAt(i, 'A');
                     i++;
-                    nextChar_tmp2 = incremente(motif_tmp.charAt(i));
+                    
+                    if (generateARN)
+                    	nextChar_tmp2 = incrementeARN(motif_tmp.charAt(i));
+                    else
+                    	nextChar_tmp2 = incrementeADN(motif_tmp.charAt(i));
                 }
                 motif_tmp.setCharAt(i, nextChar_tmp2);
             }
@@ -114,10 +137,18 @@ public class MotifGenerator {
         return list_tmp;
     }
     
+    public List<String> getADNMotifsOfLength(int length) {
+    	return this.getMotifsOfLength(length, false);
+    }
+    
+    public List<String> getARNMotifsOfLength(int length) {
+    	return this.getMotifsOfLength(length, true);
+    }
+    
     public static void main(String[] args) {
         MotifGenerator mg = MotifGenerator.getInstance();
         
-        List<String> list = mg.getMotifsOfLength(4);
+        List<String> list = mg.getADNMotifsOfLength(4);
         
         StringBuilder result = new StringBuilder();
         for (String motif : list) {
