@@ -129,7 +129,7 @@ public class AlgoKMP extends Algo {
 		if (entree.takeCompl())
 			res.add(new Couple(
 					motif.getCompl(),
-					this.preProcessing(motif.getReverse())));
+					this.preProcessing(motif.getCompl())));
 		
 		if (entree.takeRevCompl())
 			res.add(new Couple(
