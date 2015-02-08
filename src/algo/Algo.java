@@ -1,6 +1,6 @@
 package algo;
 
-import adn.Motif;
+import adn.MotifBio;
 
 /**
  * Interface representant un algorithme de recherche de motif.
@@ -19,7 +19,7 @@ public abstract class Algo {
 	 * @return true si l'algo doit considerer le mot en fonction de l'entree, false sinon
 	 */
 	protected boolean acceptFor(String word, Entree entree) {
-		Motif motif = entree.getMotif();
+		MotifBio motif = entree.getMotif();
 		
 		if (word.equals(motif.getMotif()))
 			return true;
