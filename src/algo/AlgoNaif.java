@@ -1,6 +1,6 @@
 package algo;
 
-import adn.Motif;
+import adn.MotifBio;
 
 /**
  * Algorithme de recherche de motif naif
@@ -35,7 +35,7 @@ public class AlgoNaif extends Algo {
 	@Override
 	public Sortie apply(Entree entree) {
 		// Motif
-		Motif motif = entree.getMotif();
+		MotifBio motif = entree.getMotif();
 		String motifStr = motif.getMotif();
 		int motifLen = motifStr.length();
 		
