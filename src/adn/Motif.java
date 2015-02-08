@@ -1,46 +1,30 @@
 package adn;
 
-/**
- * Classe representant un motif a rechercher dans une sequence d'ADN.
- * 
- * @author Quentin Baert & Alexandre Verkyndt
- */
 public class Motif {
-	
+
 	///////////////
 	// ATTRIBUTS //
 	///////////////
-	
-	private String motif;
+
+	/**
+	 * Motif
+	 */
+	protected String motif;
 	
 	//////////////
 	// METHODES //
 	//////////////
 	
-	// Verifie qu'une chaine est bien uniquement constituee de caracteres pouvant etre assimiles a des nucleotides	
-	private boolean checkSyntax(String motif) {
-		for (int i = 0; i < motif.length(); i++) {	
-			char nucl = motif.charAt(i);
-			if ((nucl != 'A') && (nucl != 'C') && (nucl != 'G') && (nucl != 'T') && (nucl != 'U'))
-			   return false;
-		}
-		return true;
-	}	
-	
 	/**
 	 * Constructeur.
 	 *
 	 * @param motif
-	 *			chaine de caracteres representant le motif d'ADN
+	 *			chaine de caracteres representant le motif
 	 */
-	public Motif(String motif) throws IllegalArgumentException {
-		if (this.checkSyntax(motif)) {
-			this.motif = motif;
-		}
-		else
-			throw new IllegalArgumentException("La chaine de caractères ne correspond pas à un motif d'ADN.");
+	public Motif(String motif) {
+		this.motif = motif;
 	}
-
+	
 	/**
 	 * Donne la chaine de caracteres representant le motif
 	 * 
@@ -48,54 +32,6 @@ public class Motif {
 	 */
 	public String getMotif() {
 		return this.motif;
-	}
-	
-	// Renverse une chaine de caracteres
-	private String reverse(String string) {
-		return new StringBuilder(string).reverse().toString();
-	}
-	
-	/**
-	 * Donne la chaine de caracteres representant le motif reverse de ce motif
-	 * 
-	 * @return chaine de caracteres representant le motif reverse de ce motif
-	 */
-	public String getReverse() {
-		return this.reverse(this.motif); 
-	}
-	
-	// Donne l'inverse d'un nucleotide
-	private char nucleotideCompl(char nucleotide) {
-		switch (nucleotide) {
-			case 'A': return 'T';
-			case 'C': return 'G';
-			case 'G': return 'C';
-			default : return 'A';
-		}
-	}
-	
-	/**
-	 * Donne la chaine de caracteres representant le motif complementaire a ce motif
-	 * 
-	 * @return chaine de caracteres representant le motif complementaire a ce motif
-	 */
-	public String getCompl() {
-		StringBuilder sb = new StringBuilder();
-		
-		for (char nucleotide : this.motif.toCharArray()) {
-			sb.append(this.nucleotideCompl(nucleotide));
-		}
-		
-		return sb.toString();
-	}
-	
-	/**
-	 * Donne la chaine de caracteres representant le motif reverse complementaire a ce motif
-	 * 
-	 * @return chaine de caracteres representant le motif reverse complementaire a ce motif
-	 */
-	public String getRevCompl() {
-		return this.reverse(this.getCompl());
 	}
 	
 	/**
@@ -132,36 +68,6 @@ public class Motif {
 			   !s.equals(this.motif) &&
 			   this.hasPrefix(s) &&
 			   this.hasSuffix(s);
-	}
-	
-	@Override
-	public String toString() {
-		return this.motif;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((motif == null) ? 0 : motif.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Motif other = (Motif) obj;
-		if (motif == null) {
-			if (other.motif != null)
-				return false;
-		} else if (!motif.equals(other.motif))
-			return false;
-		return true;
 	}
 
 }
