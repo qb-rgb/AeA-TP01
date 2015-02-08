@@ -99,14 +99,14 @@ public class Entree {
             throw new IOException("Le fichier fasta ne possède pas le bon format");
         }
 
-        this.sequence = "";
+        StringBuilder sb = new StringBuilder();
         // on recupere la sequence adn
-        while((ligne = br.readLine()) != null) {
-            this.sequence += ligne;
-        }
+        while((ligne = br.readLine()) != null)
+        	sb.append(ligne.substring(0, ligne.length() - 1));
         
         br.close();
 
+        this.sequence = sb.toString();
         this.motif = motif;
         this.takeReverse = takeReverse;
         this.takeCompl = takeCompl;
