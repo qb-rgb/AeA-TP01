@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import adn.Motif;
+import adn.MotifBio;
 
 /**
  * Entree d'un algorithme de recherche de motif.
@@ -30,7 +30,7 @@ public class Entree {
 	/**
 	 * Motif a rechercher dans la sequence de nucleotides
 	 */
-	private Motif motif;
+	private MotifBio motif;
 	
 	/**
 	 * Determine si l'algo doit considerer le reverse du motif
@@ -61,7 +61,7 @@ public class Entree {
 	 * @param motif
 	 * 			motif a chercher dans le sequence de l'entree
 	 */
-	public Entree(String name, String sequence, Motif motif, boolean takeReverse, boolean takeCompl, boolean takeRevCompl) {
+	public Entree(String name, String sequence, MotifBio motif, boolean takeReverse, boolean takeCompl, boolean takeRevCompl) {
 		this.name = name;
 		this.sequence = sequence;
 		this.motif = motif;
@@ -78,7 +78,7 @@ public class Entree {
      * @param chemin
      * @throws IOException
      */
-    public Entree(String path, Motif motif, boolean takeReverse, boolean takeCompl, boolean takeRevCompl) throws IOException {
+    public Entree(String path, MotifBio motif, boolean takeReverse, boolean takeCompl, boolean takeRevCompl) throws IOException {
 
         // br sert à lire le fichier ligne par ligne
         BufferedReader br = new BufferedReader(new  FileReader(path));
@@ -136,7 +136,7 @@ public class Entree {
 	 * 
 	 * @return motif de l'entree
 	 */
-	public Motif getMotif() {
+	public MotifBio getMotif() {
 		return this.motif;
 	}
 	
