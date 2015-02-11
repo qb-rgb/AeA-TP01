@@ -33,9 +33,7 @@ public class AlgoNaif implements Algo {
 	}
 	
 	// Determine si un mot est accepte par l'algorithme en fonction d'une entree
-	private boolean acceptFor(String word, Entree entree) {
-		MotifBio motif = entree.getMotif();
-		
+	private boolean acceptFor(String word, Entree entree, MotifBio motif) {
 		if (word.equals(motif.getMotif()))
 			return true;
 		else if (entree.takeCompl() && word.equals(motif.getCompl()))
@@ -62,7 +60,7 @@ public class AlgoNaif implements Algo {
 
 		for (int i = 0; i <= sequence.length() - motifLen; i++) {
 			String window = sequence.substring(i, i + motifLen);
-			if (this.acceptFor(window, entree))
+			if (this.acceptFor(window, entree, motif))
 				sortie.addPosition(i);
 		}
 		
