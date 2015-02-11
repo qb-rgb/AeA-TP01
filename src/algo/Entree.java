@@ -28,11 +28,6 @@ public class Entree {
 	private String sequence;
 	
 	/**
-	 * Motif a rechercher dans la sequence de nucleotides
-	 */
-	private MotifBio motif;
-	
-	/**
 	 * Determine si l'algo doit considerer le reverse du motif
 	 */
 	private boolean takeReverse;
@@ -64,7 +59,6 @@ public class Entree {
 	public Entree(String name, String sequence, MotifBio motif, boolean takeReverse, boolean takeCompl, boolean takeRevCompl) {
 		this.name = name;
 		this.sequence = sequence;
-		this.motif = motif;
 		this.takeCompl = takeCompl;
 		this.takeReverse = takeReverse;
 		this.takeRevCompl = takeRevCompl;
@@ -107,7 +101,6 @@ public class Entree {
         br.close();
 
         this.sequence = sb.toString();
-        this.motif = motif;
         this.takeReverse = takeReverse;
         this.takeCompl = takeCompl;
         this.takeRevCompl = takeRevCompl;
@@ -129,15 +122,6 @@ public class Entree {
 	 */
 	public String getSequence() {
 		return this.sequence;
-	}
-	
-	/**
-	 * Donne le motif de l'entree
-	 * 
-	 * @return motif de l'entree
-	 */
-	public MotifBio getMotif() {
-		return this.motif;
 	}
 	
 	/**
@@ -175,19 +159,7 @@ public class Entree {
                   this.name               +
                   "\n"                    +
                   "Sequence : "           +
-                  this.sequence           +
-                  "\n"                    +
-                  "Motif a rechercher : " +
-                  this.motif.toString());
-        
-        if (this.takeReverse)
-        	sb.append(", " + this.motif.getReverse());
-        
-        if (this.takeCompl)
-        	sb.append(", " + this.motif.getCompl());
-        
-        if (this.takeRevCompl)
-        	sb.append(", " + this.motif.getRevCompl());
+                  this.sequence);
         
         return sb.toString();
     }
@@ -212,11 +184,6 @@ public class Entree {
 		if (getClass() != obj.getClass())
 			return false;
 		Entree other = (Entree) obj;
-		if (motif == null) {
-			if (other.motif != null)
-				return false;
-		} else if (!motif.equals(other.motif))
-			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
