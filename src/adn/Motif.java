@@ -1,5 +1,10 @@
 package adn;
 
+/**
+ * Represente un motif de texte
+ * 
+ * @author Quentin Baert & Alexandre Verkyndt
+ */
 public class Motif {
 
 	///////////////
