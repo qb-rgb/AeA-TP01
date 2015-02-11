@@ -1,37 +1,11 @@
 package algo;
 
-import adn.MotifBio;
-
 /**
  * Interface representant un algorithme de recherche de motif.
  * 
  * @author Quentin Baert & Alexandre Verkyndt
  */
-public abstract class Algo {
-
-	/**
-	 * Determine si un mot est accepte par l'algorithme en fonction d'une entree
-	 * 
-	 * @param word
-	 * 			mot a determiner si l'algo doit le prendre en compte ou non
-	 * @param entree
-	 * 			entree de l'algo
-	 * @return true si l'algo doit considerer le mot en fonction de l'entree, false sinon
-	 */
-	protected boolean acceptFor(String word, Entree entree) {
-		MotifBio motif = entree.getMotif();
-		
-		if (word.equals(motif.getMotif()))
-			return true;
-		else if (entree.takeCompl() && word.equals(motif.getCompl()))
-			return true;
-		else if (entree.takeReverse() && word.equals(motif.getReverse()))
-			return true;
-		else if (entree.takeRevCompl() && word.equals(motif.getRevCompl()))
-			return true;
-		else
-			return false;
-	}
+public interface Algo {
 
 	/**
 	 * Applique l'algorithme sur une entree et retourne une sortie
@@ -40,6 +14,6 @@ public abstract class Algo {
 	 * 			entree de l'algorithme
 	 * @return sortie de l'algorithme
 	 */
-	public abstract Sortie apply(Entree entree);
+	public Sortie apply(Entree entree);
 
 }
