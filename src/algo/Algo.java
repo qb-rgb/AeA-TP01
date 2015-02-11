@@ -1,5 +1,7 @@
 package algo;
 
+import adn.MotifBio;
+
 /**
  * Interface representant un algorithme de recherche de motif.
  * 
@@ -14,6 +16,6 @@ public interface Algo {
 	 * 			entree de l'algorithme
 	 * @return sortie de l'algorithme
 	 */
-	public Sortie apply(Entree entree);
+	public Sortie apply(Entree entree, MotifBio motif);
 
 }
