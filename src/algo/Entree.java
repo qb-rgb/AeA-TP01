@@ -164,6 +164,15 @@ public class Entree {
 
 		return true;
 	}
+	
+	/**
+	 * Determine si l'entree contient une sequence d'ARN
+	 * 
+	 * @return true si l'entree contient une sequence d'ARN, false sinon
+	 */
+	public boolean containsARNSequence() {
+		return !this.containsADNSequence();
+	}
 
 	@Override
 	public String toString() {
