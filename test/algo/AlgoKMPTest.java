@@ -51,7 +51,7 @@ public class AlgoKMPTest {
 	@Test
 	public void testAlgoMotifSimplePresent() {
 		MotifADN motif = new MotifADN("AC");
-		Entree entree = new Entree("entreeTest", sequence, motif, false, false, false);
+		Entree entree = new Entree("entreeTest", sequence, false, false, false);
 		Sortie sortie = new Sortie(entree);
 		
 		// Ajout des positions attendues
@@ -59,22 +59,22 @@ public class AlgoKMPTest {
 		sortie.addPosition(7);
 		sortie.addPosition(10);
 		
-		assertEquals(sortie, algo.apply(entree));
+		assertEquals(sortie, algo.apply(entree, motif));
 	}
 	
 	@Test
 	public void testAlgoMotifSimpleAbsent() {
 		MotifADN motif = new MotifADN("TC");
-		Entree entree = new Entree("entreeTest", sequence, motif, false, false, false);
+		Entree entree = new Entree("entreeTest", sequence, false, false, false);
 		Sortie sortie = new Sortie(entree);
 		
-		assertEquals(sortie, algo.apply(entree));
+		assertEquals(sortie, algo.apply(entree, motif));
 	}
 	
 	@Test
 	public void testAlgoMotifRev() {
 		MotifADN motif = new MotifADN("AC");
-		Entree entree = new Entree("entreeTest", sequence, motif, true, false, false);
+		Entree entree = new Entree("entreeTest", sequence, true, false, false);
 		Sortie sortie = new Sortie(entree);
 		
 		// AC, CA
@@ -86,13 +86,13 @@ public class AlgoKMPTest {
 		sortie.addPosition(7);
 		sortie.addPosition(10);
 		
-		assertEquals(sortie, algo.apply(entree));
+		assertEquals(sortie, algo.apply(entree, motif));
 	}
 	
 	@Test
 	public void testAlgoMotifCompl() {
 		MotifADN motif = new MotifADN("AC");
-		Entree entree = new Entree("entreeTest", sequence, motif, false, true, false);
+		Entree entree = new Entree("entreeTest", sequence, false, true, false);
 		Sortie sortie = new Sortie(entree);
 		
 		// AC, TG
@@ -103,13 +103,13 @@ public class AlgoKMPTest {
 		sortie.addPosition(10);
 		sortie.addPosition(16);
 		
-		assertEquals(sortie, algo.apply(entree));
+		assertEquals(sortie, algo.apply(entree, motif));
 	}
 	
 	@Test
 	public void testAlgoMotifRevCompl() {
 		MotifADN motif = new MotifADN("AC");
-		Entree entree = new Entree("entreeTest", sequence, motif, false, false, true);
+		Entree entree = new Entree("entreeTest", sequence, false, false, true);
 		Sortie sortie = new Sortie(entree);
 		
 		// AC, GT
@@ -120,13 +120,13 @@ public class AlgoKMPTest {
 		sortie.addPosition(7);
 		sortie.addPosition(10);
 		
-		assertEquals(sortie, algo.apply(entree));
+		assertEquals(sortie, algo.apply(entree, motif));
 	}
 	
 	@Test
 	public void testAlgoMotifAll() {
 		MotifADN motif = new MotifADN("AC");
-		Entree entree = new Entree("entreeTest", sequence, motif, true, true, true);
+		Entree entree = new Entree("entreeTest", sequence, true, true, true);
 		Sortie sortie = new Sortie(entree);
 		
 		// AC, CA, TG, GT
@@ -140,7 +140,7 @@ public class AlgoKMPTest {
 		sortie.addPosition(10);
 		sortie.addPosition(16);
 		
-		assertEquals(sortie, algo.apply(entree));
+		assertEquals(sortie, algo.apply(entree, motif));
 	}
 
 }
