@@ -168,10 +168,12 @@ public class Entree {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((motif == null) ? 0 : motif.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result
 				+ ((sequence == null) ? 0 : sequence.hashCode());
+		result = prime * result + (takeCompl ? 1231 : 1237);
+		result = prime * result + (takeRevCompl ? 1231 : 1237);
+		result = prime * result + (takeReverse ? 1231 : 1237);
 		return result;
 	}
 
@@ -193,6 +195,12 @@ public class Entree {
 			if (other.sequence != null)
 				return false;
 		} else if (!sequence.equals(other.sequence))
+			return false;
+		if (takeCompl != other.takeCompl)
+			return false;
+		if (takeRevCompl != other.takeRevCompl)
+			return false;
+		if (takeReverse != other.takeReverse)
 			return false;
 		return true;
 	}
