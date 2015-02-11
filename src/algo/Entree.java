@@ -148,6 +148,22 @@ public class Entree {
 	public boolean takeRevCompl() {
 		return this.takeRevCompl;
 	}
+	
+	/**
+	 * Determine si l'entree contient une sequence d'ADN
+	 * 
+	 * @return true si l'entree contient une sequence d'ADN, false sinon
+	 */
+	public boolean containsADNSequence() {
+		for (int i = 0; i < this.sequence.length(); i++) {
+			if (sequence.charAt(i) == 'U')
+				return false;
+			else if (sequence.charAt(i) == 'T')
+				return true;
+		}
+
+		return true;
+	}
 
 	@Override
 	public String toString() {
