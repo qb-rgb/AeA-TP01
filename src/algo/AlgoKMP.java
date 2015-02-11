@@ -113,9 +113,8 @@ public class AlgoKMP implements Algo {
 	}
 	
 	// Donne les pre-traitements des differentes formes du motif en fonction de l'entree
-	private List<Couple> getPreProcessFor(Entree entree) {
+	private List<Couple> getPreProcessFor(Entree entree, MotifBio motif) {
 		List<Couple> res = new ArrayList<Couple>();
-		MotifBio motif = entree.getMotif();
 		
 		res.add(new Couple(
 				motif.getMotif(),
@@ -162,7 +161,7 @@ public class AlgoKMP implements Algo {
 		Sortie sortie = new Sortie(entree);
 		
 		// Ces deux listes permettent de gerer toutes les formes du motif en un seul parcours de sequence
-		List<Couple> preProcesses = this.getPreProcessFor(entree);
+		List<Couple> preProcesses = this.getPreProcessFor(entree, motif);
 		List<Integer> indexes = new ArrayList<Integer>();
 		
 		// Les indexes de chaques fenetres commencent a 0
