@@ -49,9 +49,8 @@ public class AlgoNaif implements Algo {
 	}
 
 	@Override
-	public Sortie apply(Entree entree) {
+	public Sortie apply(Entree entree, MotifBio motif) {
 		// Motif
-		MotifBio motif = entree.getMotif();
 		String motifStr = motif.getMotif();
 		int motifLen = motifStr.length();
 		
