@@ -61,6 +61,18 @@ public class PlotBuilder {
 		this.searchInADNSequence = entree.containsADNSequence();
 	}
 	
+	// Ajoute toutes les formes prises en compte par l'entree d'un motif trouve par l'algo
+	private void addMotifs(Entree entree, MotifBio motif, Set<String> set) {
+		set.add(motif.getMotif());
+		
+		if (entree.takeReverse())
+			set.add(motif.getReverse());
+		if (entree.takeCompl())
+			set.add(motif.getCompl());
+		if (entree.takeRevCompl())
+			set.add(motif.getRevCompl());
+	}
+	
 	/**
 	 * Effectue toutes les recherche de toutes les motifs et renvoie leur position
 	 * 
@@ -91,6 +103,7 @@ public class PlotBuilder {
 					motifBio = new MotifARN(motifStr);
 			
 				res.addAll(this.algo.apply(newEntree, motifBio).getPositions());
+				this.addMotifs(newEntree, motifBio, motifs);
 			}
 		}
 		
