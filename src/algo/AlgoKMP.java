@@ -11,7 +11,7 @@ import adn.MotifBio;
  * 
  * @author Quentin Baert & Alexandre Verkyndt
  */
-public class AlgoKMP extends Algo {
+public class AlgoKMP implements Algo {
 	
 	///////////////
 	// ATTRIBUTS //
