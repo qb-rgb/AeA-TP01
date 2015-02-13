@@ -131,12 +131,10 @@ public class PlotBuilder {
 					positions2.addAll(this.algo.apply(entree2, motifBio).getPositions());
 					
 					// Ecriture des donnees dans le fichier cible
-					bw.write("### NEW MOTIF ###\n");
 					for (Integer position1 : positions1) {
 						for (Integer position2 : positions2) {
 							bw.write((i + position1) + "\t\t\t" + position2 + "\n");
 						}
-						bw.write("###\n");
 					}
 
 					// Ajout du motif traite dans l'ensemble
