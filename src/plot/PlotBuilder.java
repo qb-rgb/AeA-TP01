@@ -14,7 +14,6 @@ import adn.MotifARN;
 import adn.MotifBio;
 import algo.Algo;
 import algo.Entree;
-import algo.Sortie;
 
 /**
  * Permet de construire un dotplot depuis une entree et une taille de motif
@@ -28,9 +27,14 @@ public class PlotBuilder {
 	///////////////
 
 	/**
-	 * Entree sur laquelle effectuer la recherche
+	 * Premiere entree sur laquelle effectuer la recherche
 	 */
-	private Entree entree;
+	private Entree entree1;
+	
+	/**
+	 * Seconde entree sur laquelle effectuer la recherche
+	 */
+	private Entree entree2;
 
 	/**
 	 * Algorithme avec lequel effectuer la recherche
@@ -43,10 +47,10 @@ public class PlotBuilder {
 	private int length;
 
 	/**
-	 * Determine si la sequence de l'entree est une sequence d'ADN
+	 * Determine si la sequence de la premiere entree est une sequence d'ADN
 	 */
-	private boolean searchInADNSequence;
-
+	private boolean entree1IsADNSequence;
+	
 	//////////////
 	// METHODES //
 	//////////////
@@ -61,11 +65,12 @@ public class PlotBuilder {
 	 * @param length
 	 *            taille des motifs a rechercher
 	 */
-	public PlotBuilder(Entree entree, Algo algo, int length) {
-		this.entree = entree;
+	public PlotBuilder(Entree entree1, Entree entree2, Algo algo, int length) {
+		this.entree1 = entree1;
+		this.entree2 = entree2;
 		this.algo = algo;
 		this.length = length;
-		this.searchInADNSequence = entree.containsADNSequence();
+		this.entree1IsADNSequence = entree1.containsADNSequence();
 	}
 
 	// Ajoute toutes les formes prises en compte par l'entree d'un motif trouve par l'algo
@@ -80,31 +85,8 @@ public class PlotBuilder {
 			set.add(motif.getRevCompl());
 	}
 
-	// Imprime les paires d'indices
-	private void printInt(int i1, int i2, BufferedWriter bw) throws IOException {
-		bw.write(i1 + "\t\t\t" + i1 + "\n");
-		bw.write(i1 + "\t\t\t" + i2 + "\n");
-		bw.write(i2 + "\t\t\t" + i1 + "\n");
-		bw.write(i2 + "\t\t\t" + i2 + "\n");
-	}
-
-	// Imprime les coordonnees trouvees dans une sortie
-	private void printCoordinate(Sortie sortie, BufferedWriter bw)
-			throws IOException {
-		List<Integer> positions = new ArrayList<Integer>();
-		positions.addAll(sortie.getPositions());
-		int length = positions.size();
-
-		for (int i = 0; i < length; i++) {
-			int li = positions.get(i);
-			for (int j = i + 1; j < length; j++) {
-				this.printInt(li, positions.get(j), bw);
-			}
-		}
-	}
-
 	/**
-	 * Imprime dans un fichier les coordonnees trouve afin de creer un dotplot
+	 * Imprime dans un fichier les coordonnees trouvees afin de creer un dotplot
 	 * 
 	 * @param path
 	 * 			chemin vers le fichier dans lequel ecrire les coordonnees
@@ -112,49 +94,50 @@ public class PlotBuilder {
 	 */
 	public void printPositions(String path) {
 		Set<String> motifs = new TreeSet<String>();
-		String sequence = this.entree.getSequence();
+		String sequence1 = this.entree1.getSequence();
 		BufferedWriter bw = null;
-
+		
 		try {
 			File file = new File(path);
 			file.createNewFile();
 			bw = new BufferedWriter(new FileWriter(path, true));
-
-			// Parcours de la sequence pour chercher toutes les occurences des
-			// motifs de taille length
-			for (int i = 0; i <= sequence.length() - this.length; i++) {
-				String motifStr = sequence.substring(i, i + this.length);
-
-				// Si le motif n'a pas deja ete traite
+			
+			for (int i = 0; i <= sequence1.length() - this.length; i++) {
+				String motifStr = sequence1.substring(i, i + this.length);
+				
 				if (!motifs.contains(motifStr)) {
 					MotifBio motifBio;
-					// Il est inutile de considerer la partie de la sequence
-					// deja parcourue
-					Entree newEntree = new Entree(entree.getName(), entree
-							.getSequence().substring(i), entree.takeReverse(),
-							entree.takeCompl(), entree.takeRevCompl());
-
-					if (this.searchInADNSequence)
+					
+					if (this.entree1IsADNSequence)
 						motifBio = new MotifADN(motifStr);
 					else
 						motifBio = new MotifARN(motifStr);
-
-					this.addMotifs(newEntree, motifBio, motifs);
-					this.printCoordinate(this.algo.apply(newEntree, motifBio), bw);
+					
+					
+					List<Integer> positions1 = new ArrayList<>();
+					List<Integer> positions2 = new ArrayList<>();
+					positions1.addAll(this.algo.apply(entree1, motifBio).getPositions());
+					positions2.addAll(this.algo.apply(entree2, motifBio).getPositions());
+					
+					bw.write("### NEW MOTIF ###\n");
+					for (Integer position1 : positions1) {
+						for (Integer position2 : positions2) {
+							bw.write(position1 + "\t\t\t" + position2 + "\n");
+						}
+						bw.write("###\n");
+					}
+					this.addMotifs(entree1, motifBio, motifs);
 				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (bw != null)
-					bw.close();
+				bw.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-
 	}
 
 }
