@@ -94,7 +94,7 @@ public class Entree {
         StringBuilder sb = new StringBuilder();
         // on recupere la sequence adn
         while((ligne = br.readLine()) != null)
-        	sb.append(ligne.substring(0, ligne.length() - 1));
+        	sb.append(ligne);
         
         br.close();
 
