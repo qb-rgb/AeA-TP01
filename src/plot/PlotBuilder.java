@@ -93,8 +93,11 @@ public class PlotBuilder {
 	 * @return position de tous les motifs de taille this.length
 	 */
 	public void printPositions(String path) {
+		// Ensemble des motifs deja rencontres (pour eviter de traiter deux fois un meme motif)
 		Set<String> motifs = new TreeSet<String>();
+		// Sequence de reference
 		String sequence1 = this.entree1.getSequence();
+		// Permet d'ecrire les donnees dans un fichier
 		BufferedWriter bw = null;
 		
 		try {
@@ -102,9 +105,12 @@ public class PlotBuilder {
 			file.createNewFile();
 			bw = new BufferedWriter(new FileWriter(path, true));
 			
+			// Parcours de la sequence de reference pour trouver les motifs
 			for (int i = 0; i <= sequence1.length() - this.length; i++) {
+				// Nouveau motif rencontre
 				String motifStr = sequence1.substring(i, i + this.length);
 				
+				// Si le motif n'a pas deja ete traite, la recherche est effectuee
 				if (!motifs.contains(motifStr)) {
 					MotifBio motifBio;
 					
@@ -119,6 +125,7 @@ public class PlotBuilder {
 					positions1.addAll(this.algo.apply(entree1, motifBio).getPositions());
 					positions2.addAll(this.algo.apply(entree2, motifBio).getPositions());
 					
+					// Ecriture des donnees dans le fichier cible
 					bw.write("### NEW MOTIF ###\n");
 					for (Integer position1 : positions1) {
 						for (Integer position2 : positions2) {
@@ -126,6 +133,7 @@ public class PlotBuilder {
 						}
 						bw.write("###\n");
 					}
+					// Ajout du motif traite dans l'ensemble
 					this.addMotifs(entree1, motifBio, motifs);
 				}
 			}
