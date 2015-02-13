@@ -112,6 +112,11 @@ public class PlotBuilder {
 				
 				// Si le motif n'a pas deja ete traite, la recherche est effectuee
 				if (!motifs.contains(motifStr)) {
+					Entree newEntree = new Entree(entree1.getName(),
+							entree1.getSequence().substring(i),
+							entree1.takeReverse(),
+							entree1.takeCompl(),
+							entree1.takeRevCompl());
 					MotifBio motifBio;
 					
 					if (this.entree1IsADNSequence)
@@ -122,19 +127,20 @@ public class PlotBuilder {
 					
 					List<Integer> positions1 = new ArrayList<>();
 					List<Integer> positions2 = new ArrayList<>();
-					positions1.addAll(this.algo.apply(entree1, motifBio).getPositions());
+					positions1.addAll(this.algo.apply(newEntree, motifBio).getPositions());
 					positions2.addAll(this.algo.apply(entree2, motifBio).getPositions());
 					
 					// Ecriture des donnees dans le fichier cible
 					bw.write("### NEW MOTIF ###\n");
 					for (Integer position1 : positions1) {
 						for (Integer position2 : positions2) {
-							bw.write(position1 + "\t\t\t" + position2 + "\n");
+							bw.write((i + position1) + "\t\t\t" + position2 + "\n");
 						}
 						bw.write("###\n");
 					}
+
 					// Ajout du motif traite dans l'ensemble
-					this.addMotifs(entree1, motifBio, motifs);
+					this.addMotifs(newEntree, motifBio, motifs);
 				}
 			}
 		} catch (IOException e) {
