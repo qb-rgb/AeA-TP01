@@ -31,12 +31,8 @@ public class Sortie {
 	/**
 	 * Constructeur
 	 * 
-	 * @param name
-	 * 			nom de la sequence d'ADN de la sortie
-	 * @param sequence
-	 * 			sequence dans laquelle le motif a ete cherche
-	 * @param motif
-	 * 			motif recherche par l'algorithme
+	 * @param entree
+	 * 			entree a laquelle est asssociee la sortie 
 	 */
 	public Sortie(Entree entree) {
 		this.entree = entree;
