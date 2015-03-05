@@ -21,7 +21,7 @@ Sont fournis :
 * la documentation du programme au format HTML
 * un `jar` éxécutable qui permet d'appliquer l'algorithme de recherche de motif _KMP_ sur un fichier `fasta`
 * un script shell qui permet de passer d'un fichier `.dat` à un _DotPlot_ au format `png` en utilisant `gnuplot`
-* un dossier `generate` dans lequel se trouve un fichier `.dat` déjà généré ainsi que le _DotPlot_ correspondant
+* un dossier `exemple` dans lequel se trouve un fichier `.dat` déjà généré ainsi que le _DotPlot_ correspondant
 
 Utilisation
 -----------
@@ -99,5 +99,5 @@ L'algorithme consiste donc à faire avancer les différentes fenêtres en foncti
 Pour construire le _DotPlot_, l'algorithme KMP est appliqué sur une séquence. Pour cela, une fenêtre parcours toute la séquence caractère par caractère et lance une recherche sur le motif présent dans la fenêtre.  
 Afin d'optimiser ce parcours, la recherche est uniquement lancé sur la séquence à partir de l'indice du début de la fenêtre (le motif n'est pas présent avant sinon la recherche aurait déjà été faite) et un ensemble de tous les motifs recherché permet de ne pas relancer une recherche sur un moitf déjà rencontré.
 
-L'exemple présent dans le dossier `generate` a été généré depuis la séquence `chromosome13_NT_009952.fasta` pour les motifs de taille 10.  
+L'exemple présent dans le dossier `exemple` a été généré depuis la séquence `chromosome13_NT_009952.fasta` pour les motifs de taille 10.  
 La génération du fichier `.dat` a pris environ 7 minutes.
