@@ -51,8 +51,6 @@ public class Entree {
 	 * 			nom de la sequence d'ADN de l'entree 
 	 * @param sequence
 	 * 			sequence de l'entree dans laquelle chercher le motif
-	 * @param motif
-	 * 			motif a chercher dans le sequence de l'entree
 	 */
 	public Entree(String name, String sequence, boolean takeReverse, boolean takeCompl, boolean takeRevCompl) {
 		this.name = name;
@@ -67,8 +65,18 @@ public class Entree {
 	 * 
      * Récupère depuis un fichier fasta le nom de la sequence et la sequence ADN
      * 
-     * @param chemin
-     * @throws IOException
+     * @param path
+     * 			chemin du fichier fasta correspondant a l'entree
+     * @param takeReverse
+     * 			l'algo applique a l'entree devra-t-il prendre en compte le
+     * 			reverse du motif ?
+     * @param takeCompl
+     * 			l'algo applique a l'entree devra-t-il prendre en compte le
+     * 			complement du motif ?
+     * @param takeRevCompl
+     * 			l'algo applique a l'entree devra-t-il prendre en compte le
+     * 			reverse complement du motif ?
+     * @throws IOException en cas d'erreur lors de la lecture du fichier fasta
      */
     public Entree(String path, boolean takeReverse, boolean takeCompl, boolean takeRevCompl) throws IOException {
 
