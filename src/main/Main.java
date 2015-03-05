@@ -52,7 +52,13 @@ public class Main {
 		int code;
 		int length;
 		
-		String targetPath = path.substring(0, path.indexOf("fasta")) + "dat";
+		int lastIndexOfSlash = path.lastIndexOf("/");
+		String targetPath;
+		
+		if (lastIndexOfSlash != -1)
+			targetPath = path.substring(lastIndexOfSlash, path.length()).replace("fasta", "dat");
+		else
+			targetPath = path.replace("fasta", "dat");
 		
 		try {
 			code = Integer.parseInt(args[1]);
