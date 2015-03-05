@@ -58,8 +58,10 @@ public class PlotBuilder {
 	/**
 	 * Constructeur
 	 * 
-	 * @param entree
-	 *            entree sur laquelle effectuer la recherche
+	 * @param entree1
+	 *            premiere entree sur laquelle effectuer la recherche
+	 * @param entree2
+	 * 			  seconde entree sur laquelle effectuer la recherche
 	 * @param algo
 	 *            algorithme avec lequel effectuer la recherche
 	 * @param length
@@ -90,7 +92,6 @@ public class PlotBuilder {
 	 * 
 	 * @param path
 	 * 			chemin vers le fichier dans lequel ecrire les coordonnees
-	 * @return position de tous les motifs de taille this.length
 	 */
 	public void printPositions(String path) {
 		// Ensemble des motifs deja rencontres (pour eviter de traiter deux fois un meme motif)
