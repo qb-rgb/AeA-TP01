@@ -8,8 +8,17 @@ import plot.PlotBuilder;
 import algo.AlgoKMP;
 import algo.Entree;
 
+/**
+ * Main
+ * 
+ * Ce programme permet de prendre un fichier fasta en paramètre et de sortir
+ * un fichier de données pouvant servir à la création d'un dotplot.
+ * 
+ * @author Quentin Baert & Alexandre Verkyndt
+ */
 public class Main {
 	
+	// Affiche les infos relatives à l'utilisation du programme
 	private static void printInfo() {
 		System.out.println("Ce programme permet de générer un fichier .dat" + 
 				" pouvant servir a générer un plot à partir d'une sequence d'ADN/ARN.");
@@ -33,6 +42,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
+		// Le programme nécéssite 3 arguments
 		if (args.length != 3) {
 			printInfo();
 			return;
