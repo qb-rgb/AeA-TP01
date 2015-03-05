@@ -56,7 +56,7 @@ public class Main {
 		String targetPath;
 		
 		if (lastIndexOfSlash != -1)
-			targetPath = path.substring(lastIndexOfSlash, path.length()).replace("fasta", "dat");
+			targetPath = path.substring(lastIndexOfSlash + 1, path.length()).replace("fasta", "dat");
 		else
 			targetPath = path.replace("fasta", "dat");
 		
