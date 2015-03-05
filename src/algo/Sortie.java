@@ -3,8 +3,6 @@ package algo;
 import java.util.Set;
 import java.util.TreeSet;
 
-import adn.MotifADN;
-
 /**
  * Sortie d'un algorithme de recherche de motif.
  * 
@@ -20,11 +18,6 @@ public class Sortie {
 	 * Entree a partir de laquelle a ete generee la sortie
 	 */
 	private Entree entree;
-	
-	/**
-	 * Motif qui a ete cherche par l'algorithme
-	 */
-	private MotifADN motif;
 	
 	/**
 	 * Liste des position auxquelles le motif a ete trouve par l'algorithme
@@ -50,15 +43,6 @@ public class Sortie {
 		this.positions = new TreeSet<Integer>();
 	}
 
-	/**
-	 * Donne le motif de la sortie
-	 * 
-	 * @return motif de la sortie
-	 */
-	public MotifADN getMotif() {
-		return this.motif;
-	}
-	
 	/**
 	 * Donne les positions du motif dans la sequence
 	 * 
@@ -97,7 +81,6 @@ public class Sortie {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((entree == null) ? 0 : entree.hashCode());
-		result = prime * result + ((motif == null) ? 0 : motif.hashCode());
 		result = prime * result
 				+ ((positions == null) ? 0 : positions.hashCode());
 		return result;
@@ -116,11 +99,6 @@ public class Sortie {
 			if (other.entree != null)
 				return false;
 		} else if (!entree.equals(other.entree))
-			return false;
-		if (motif == null) {
-			if (other.motif != null)
-				return false;
-		} else if (!motif.equals(other.motif))
 			return false;
 		if (positions == null) {
 			if (other.positions != null)
